@@ -1,0 +1,19 @@
+{
+  "code_sha256": "04d6176987ab897b507134d5891f18b850ca69f5558f6506cc1efac5c0877989",
+  "schema_sha256": "2a65222f76a9d26daab47a1b57df041089ada3647edfbc310ab759de5bc69944",
+  "settings": {
+    "batch_size": 1024,
+    "depth": 4,
+    "device": "cuda",
+    "diffusion_steps": 200,
+    "ema_decay": 0.999,
+    "learning_rate": 0.0002,
+    "records": 9000,
+    "sample_batch_size": 2048,
+    "seed": 684,
+    "torch_version": "2.5.1+cu124",
+    "train_steps": 20000,
+    "width": 512
+  },
+  "source_sha256": "f82ac129da2ddd2299391ff6fbae3a6a58b3edcf59ac9d7bd480c00fe453112a"
+}

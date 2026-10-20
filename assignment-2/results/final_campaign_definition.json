@@ -1,0 +1,875 @@
+{
+  "attacks": "negative per-record cross-entropy immediately after one round; retrospective oracle threshold",
+  "config_sha256": "5b546ec76c05a32d9214d7eae0a060c5d1712fb69d2428cb214ded4026a91f7c",
+  "dataset": {
+    "created_utc": "2026-10-11T17:22:00.568141+00:00",
+    "derived_columns": [
+      "change",
+      "diabetesMed"
+    ],
+    "generation_identity": {
+      "code_sha256": "04d6176987ab897b507134d5891f18b850ca69f5558f6506cc1efac5c0877989",
+      "schema_sha256": "2a65222f76a9d26daab47a1b57df041089ada3647edfbc310ab759de5bc69944",
+      "settings": {
+        "batch_size": 1024,
+        "depth": 4,
+        "device": "cuda",
+        "diffusion_steps": 200,
+        "ema_decay": 0.999,
+        "learning_rate": 0.0002,
+        "records": 9000,
+        "sample_batch_size": 2048,
+        "seed": 684,
+        "torch_version": "2.5.1+cu124",
+        "train_steps": 20000,
+        "width": 512
+      },
+      "source_sha256": "f82ac129da2ddd2299391ff6fbae3a6a58b3edcf59ac9d7bd480c00fe453112a"
+    },
+    "generator": "class_conditional_tabddpm",
+    "label_definition": "1: readmitted <30 days; 0: >30 or NO",
+    "n_records": 9000,
+    "positive_count": 1010,
+    "preprocessor_fit_population": "public UCI generator seed records, not synthetic FL records",
+    "preprocessor_sha256": "416bfb8467b1ac727347e8f023856a9cbe501a2e0293279cde827d804251e023",
+    "regenerated_for_assignment_2": true,
+    "schema_sha256": "2a65222f76a9d26daab47a1b57df041089ada3647edfbc310ab759de5bc69944",
+    "sha256": "0975380dce0bc339340ec746671cb59bbb562f7589038dbd359f39556ca0d2db",
+    "source_sha256": "f82ac129da2ddd2299391ff6fbae3a6a58b3edcf59ac9d7bd480c00fe453112a"
+  },
+  "effective_optimizer": {
+    "momentum": 0.0,
+    "name": "SGD",
+    "weight_decay": 0.01
+  },
+  "global_members": "3600 optimization training records",
+  "global_nonmembers": "5400 records: 900 validation plus 4500 test",
+  "local_nonmembers": "all records outside that client optimization training partition",
+  "protocol": {
+    "checkpoint_selection": "lowest raw validation cross-entropy; earliest tie",
+    "classification_threshold": "maximize validation balanced accuracy; ties choose highest threshold",
+    "configuration_selection": "highest mean selected validation AUROC across all four client counts and three seeds; within 0.002 choose smallest weight decay",
+    "interpretation": "predictive early stopping, not optimization convergence",
+    "max_rounds": 300,
+    "mechanism_goal": "prefer candidates with practical training-loss stability in all 12 runs and selected validation-minus-training cross-entropy gap at most 0.1 in every run; otherwise mark recommendation provisional",
+    "min_delta": 0.0001,
+    "min_rounds": 80,
+    "monitor": "validation cross-entropy after aggregation",
+    "monitor_key": "validation_cross_entropy",
+    "optimizer": "SGD without momentum; include partial batches",
+    "partition": "reuse frozen 3600 optimization, 900 validation, 4500 test partitions",
+    "patience": 150,
+    "patience_reference": "reset after cumulative validation CE reduction greater than min_delta",
+    "references": [
+      "https://scikit-learn.org/1.5/modules/classification_threshold.html",
+      "https://docs.pytorch.org/docs/stable/generated/torch.optim.SGD.html"
+    ],
+    "revision": 3,
+    "revision_rationale": "Revision 2 limited all 12 selected validation/train CE gaps to below 0.036; four runs passed full stability and five additional runs passed the loss bounds. Validation patience 60 preempted LR settling. Seven halvings to initial_lr/100 can require 7*(10+1)+6*5=107 plateau rounds; the fixed-LR stability guard requires another 33. Patience 150 gives that sequence time to finish with a small margin. Only patience changes; all training updates, scheduler settings, loss bounds, selection rules and 300 total-round cap remain unchanged. Explicitly verified checkpoint migration preserves revision-2 histories and provenance; incompatible direct caches still reject.",
+    "scheduler": {
+      "cooldown": 5,
+      "eps": 1e-12,
+      "factor": 0.5,
+      "minimum_lr_ratio": 0.01,
+      "patience": 10,
+      "threshold": 0.001,
+      "threshold_mode": "abs"
+    },
+    "scheduler_monitor": "validation cross-entropy after aggregation",
+    "scope": "Continue eight early-stopped revision-2 baselines; retain four stable runs. No new data, parameter grid, attacks, or report changes",
+    "selection_tolerance": 0.002,
+    "stability_settings": {
+      "absolute_range": 0.0005,
+      "absolute_trend": 0.0001,
+      "consecutive_windows": 5,
+      "denominator_floor": 1e-12,
+      "fixed_lr_rounds": 33,
+      "max_rounds": 300,
+      "min_rounds": 50,
+      "relative_range": 0.005,
+      "relative_trend": 0.001,
+      "smoothing_window": 10,
+      "stability_window": 20
+    },
+    "stop": "first practical training-loss stability, validation-CE patience, or 300 rounds; restore best validation-CE checkpoint",
+    "training_stability": "existing mixed loss tolerances and five persistent windows; fixed LR for all 33 rounds contributing to those windows; also record original strict criterion",
+    "validation_sanity": {
+      "minimum_mean_auroc_each_client_count": 0.6,
+      "minimum_mean_calibrated_balanced_accuracy_each_client_count": 0.55
+    },
+    "weight_decay_candidates": [
+      0.01
+    ]
+  },
+  "revision": 1,
+  "selection": "validation only; original strict and safeguarded loss criteria reported separately",
+  "settings": [
+    {
+      "batch_size": 32,
+      "clients": 1,
+      "config_id": "k01_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 1,
+      "config_id": "k01_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 1,
+      "config_id": "k01_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 16,
+      "clients": 1,
+      "config_id": "k01_b16_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 16,
+      "clients": 1,
+      "config_id": "k01_b16_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 16,
+      "clients": 1,
+      "config_id": "k01_b16_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 64,
+      "clients": 1,
+      "config_id": "k01_b64_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 64,
+      "clients": 1,
+      "config_id": "k01_b64_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 64,
+      "clients": 1,
+      "config_id": "k01_b64_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 1,
+      "config_id": "k01_b32_e3_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 3,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 1,
+      "config_id": "k01_b32_e3_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 3,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 1,
+      "config_id": "k01_b32_e3_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 3,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 1,
+      "config_id": "k01_b32_e5_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 5,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 1,
+      "config_id": "k01_b32_e5_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 5,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 1,
+      "config_id": "k01_b32_e5_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 5,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 1,
+      "config_id": "k01_b32_e1_lr0.01",
+      "learning_rate": 0.01,
+      "local_epochs": 1,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 1,
+      "config_id": "k01_b32_e1_lr0.01",
+      "learning_rate": 0.01,
+      "local_epochs": 1,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 1,
+      "config_id": "k01_b32_e1_lr0.01",
+      "learning_rate": 0.01,
+      "local_epochs": 1,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 1,
+      "config_id": "k01_b32_e1_lr0.1",
+      "learning_rate": 0.1,
+      "local_epochs": 1,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 1,
+      "config_id": "k01_b32_e1_lr0.1",
+      "learning_rate": 0.1,
+      "local_epochs": 1,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 1,
+      "config_id": "k01_b32_e1_lr0.1",
+      "learning_rate": 0.1,
+      "local_epochs": 1,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 10,
+      "config_id": "k10_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 10,
+      "config_id": "k10_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 10,
+      "config_id": "k10_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 16,
+      "clients": 10,
+      "config_id": "k10_b16_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 16,
+      "clients": 10,
+      "config_id": "k10_b16_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 16,
+      "clients": 10,
+      "config_id": "k10_b16_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 64,
+      "clients": 10,
+      "config_id": "k10_b64_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 64,
+      "clients": 10,
+      "config_id": "k10_b64_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 64,
+      "clients": 10,
+      "config_id": "k10_b64_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 10,
+      "config_id": "k10_b32_e3_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 3,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 10,
+      "config_id": "k10_b32_e3_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 3,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 10,
+      "config_id": "k10_b32_e3_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 3,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 10,
+      "config_id": "k10_b32_e5_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 5,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 10,
+      "config_id": "k10_b32_e5_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 5,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 10,
+      "config_id": "k10_b32_e5_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 5,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 10,
+      "config_id": "k10_b32_e1_lr0.01",
+      "learning_rate": 0.01,
+      "local_epochs": 1,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 10,
+      "config_id": "k10_b32_e1_lr0.01",
+      "learning_rate": 0.01,
+      "local_epochs": 1,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 10,
+      "config_id": "k10_b32_e1_lr0.01",
+      "learning_rate": 0.01,
+      "local_epochs": 1,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 10,
+      "config_id": "k10_b32_e1_lr0.1",
+      "learning_rate": 0.1,
+      "local_epochs": 1,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 10,
+      "config_id": "k10_b32_e1_lr0.1",
+      "learning_rate": 0.1,
+      "local_epochs": 1,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 10,
+      "config_id": "k10_b32_e1_lr0.1",
+      "learning_rate": 0.1,
+      "local_epochs": 1,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 20,
+      "config_id": "k20_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 20,
+      "config_id": "k20_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 20,
+      "config_id": "k20_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 16,
+      "clients": 20,
+      "config_id": "k20_b16_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 16,
+      "clients": 20,
+      "config_id": "k20_b16_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 16,
+      "clients": 20,
+      "config_id": "k20_b16_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 64,
+      "clients": 20,
+      "config_id": "k20_b64_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 64,
+      "clients": 20,
+      "config_id": "k20_b64_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 64,
+      "clients": 20,
+      "config_id": "k20_b64_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 20,
+      "config_id": "k20_b32_e3_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 3,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 20,
+      "config_id": "k20_b32_e3_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 3,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 20,
+      "config_id": "k20_b32_e3_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 3,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 20,
+      "config_id": "k20_b32_e5_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 5,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 20,
+      "config_id": "k20_b32_e5_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 5,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 20,
+      "config_id": "k20_b32_e5_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 5,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 20,
+      "config_id": "k20_b32_e1_lr0.01",
+      "learning_rate": 0.01,
+      "local_epochs": 1,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 20,
+      "config_id": "k20_b32_e1_lr0.01",
+      "learning_rate": 0.01,
+      "local_epochs": 1,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 20,
+      "config_id": "k20_b32_e1_lr0.01",
+      "learning_rate": 0.01,
+      "local_epochs": 1,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 20,
+      "config_id": "k20_b32_e1_lr0.1",
+      "learning_rate": 0.1,
+      "local_epochs": 1,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 20,
+      "config_id": "k20_b32_e1_lr0.1",
+      "learning_rate": 0.1,
+      "local_epochs": 1,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 20,
+      "config_id": "k20_b32_e1_lr0.1",
+      "learning_rate": 0.1,
+      "local_epochs": 1,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 50,
+      "config_id": "k50_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 50,
+      "config_id": "k50_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 50,
+      "config_id": "k50_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 16,
+      "clients": 50,
+      "config_id": "k50_b16_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 16,
+      "clients": 50,
+      "config_id": "k50_b16_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 16,
+      "clients": 50,
+      "config_id": "k50_b16_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 64,
+      "clients": 50,
+      "config_id": "k50_b64_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 64,
+      "clients": 50,
+      "config_id": "k50_b64_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 64,
+      "clients": 50,
+      "config_id": "k50_b64_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 50,
+      "config_id": "k50_b32_e3_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 3,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 50,
+      "config_id": "k50_b32_e3_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 3,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 50,
+      "config_id": "k50_b32_e3_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 3,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 50,
+      "config_id": "k50_b32_e5_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 5,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 50,
+      "config_id": "k50_b32_e5_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 5,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 50,
+      "config_id": "k50_b32_e5_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 5,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 50,
+      "config_id": "k50_b32_e1_lr0.01",
+      "learning_rate": 0.01,
+      "local_epochs": 1,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 50,
+      "config_id": "k50_b32_e1_lr0.01",
+      "learning_rate": 0.01,
+      "local_epochs": 1,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 50,
+      "config_id": "k50_b32_e1_lr0.01",
+      "learning_rate": 0.01,
+      "local_epochs": 1,
+      "seed": 686,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 50,
+      "config_id": "k50_b32_e1_lr0.1",
+      "learning_rate": 0.1,
+      "local_epochs": 1,
+      "seed": 684,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 50,
+      "config_id": "k50_b32_e1_lr0.1",
+      "learning_rate": 0.1,
+      "local_epochs": 1,
+      "seed": 685,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 50,
+      "config_id": "k50_b32_e1_lr0.1",
+      "learning_rate": 0.1,
+      "local_epochs": 1,
+      "seed": 686,
+      "weight_decay": 0.01
+    }
+  ],
+  "source_sha256": {
+    "common.py": "92379a617ec41bb45bc6893fa3cf0fae97c1aee6c0b3e1da3221ba2becd8671a",
+    "convergence_pilot.py": "59b81434bee927eda8ec8d8b0166803a57a13a6ed8f9a8763de92761ad8f69d0",
+    "fedavg.py": "58e2523a282547a5bfb157b4cf48efd43e0d868a1f687db1bbb19dbcfd857999",
+    "final_campaign.py": "6d065409f6e030d8db3b18f1bab047b58561c27f26543be4b2e47542b2c55c84",
+    "generalization_followup.py": "3bb6d4671fb2cfb9f5a6091a3c898a57024381d147511694fa93cf79406087d8",
+    "task_a_protocol.json": "e561d4966de1f62f6156927cd79937ec6c5ee7babeab1443a3c487b9dc45ee90",
+    "task_a_protocol.py": "a87b84dc721c88e23275cedaa784d30e911e8eff5b137fdb37b6988b1b52bcac",
+    "training_selection.json": "49a5b2be454b48b0bafefb4ddf57fba9261590e424a9470b6933fb44f54987e6",
+    "training_selection.py": "d171920972c022bc162eb0c09f80e12870b7487e156a4a395fb982393b4c0271"
+  }
+}

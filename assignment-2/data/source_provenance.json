@@ -1,0 +1,8 @@
+{
+  "dataset_doi": "10.24432/C5230J",
+  "eligible_rows": 99343,
+  "license": "CC BY 4.0",
+  "prediction_time": "at discharge",
+  "sha256": "f82ac129da2ddd2299391ff6fbae3a6a58b3edcf59ac9d7bd480c00fe453112a",
+  "url": "https://archive.ics.uci.edu/static/public/296/diabetes+130-us+hospitals+for+years+1999-2008.zip"
+}

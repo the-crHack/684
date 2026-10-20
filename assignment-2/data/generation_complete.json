@@ -1,0 +1,31 @@
+{
+  "audit": {
+    "duplicate_full_rows": 0,
+    "exact_seed_match_rate": 0.0,
+    "excluded_discharge_rate": 0.0,
+    "medication_inconsistency_rate": 0.0
+  },
+  "dataset_sha256": "0975380dce0bc339340ec746671cb59bbb562f7589038dbd359f39556ca0d2db",
+  "finalization_recovery": "fixed partition manifest suffix; reused frozen records and preprocessor",
+  "generation_identity": {
+    "code_sha256": "04d6176987ab897b507134d5891f18b850ca69f5558f6506cc1efac5c0877989",
+    "schema_sha256": "2a65222f76a9d26daab47a1b57df041089ada3647edfbc310ab759de5bc69944",
+    "settings": {
+      "batch_size": 1024,
+      "depth": 4,
+      "device": "cuda",
+      "diffusion_steps": 200,
+      "ema_decay": 0.999,
+      "learning_rate": 0.0002,
+      "records": 9000,
+      "sample_batch_size": 2048,
+      "seed": 684,
+      "torch_version": "2.5.1+cu124",
+      "train_steps": 20000,
+      "width": 512
+    },
+    "source_sha256": "f82ac129da2ddd2299391ff6fbae3a6a58b3edcf59ac9d7bd480c00fe453112a"
+  },
+  "partition_code_sha256": "92379a617ec41bb45bc6893fa3cf0fae97c1aee6c0b3e1da3221ba2becd8671a",
+  "preprocessor_sha256": "416bfb8467b1ac727347e8f023856a9cbe501a2e0293279cde827d804251e023"
+}

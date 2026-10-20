@@ -1,0 +1,28 @@
+{
+  "revision": 2,
+  "purpose": "Prospective Task A optimization/stopping follow-up; original 84 runs remain unchanged",
+  "max_rounds": 300,
+  "min_rounds": 50,
+  "smoothing_window": 10,
+  "stability_window": 20,
+  "relative_range": 0.005,
+  "relative_trend": 0.001,
+  "absolute_range": 0.0005,
+  "absolute_trend": 0.0001,
+  "consecutive_windows": 5,
+  "fixed_lr_rounds": 50,
+  "denominator_floor": 1e-12,
+  "local_update": "Scale a partial batch learning rate by actual batch size / nominal batch size; keep all records",
+  "monitor": "Global training cross-entropy after aggregation; test metrics never enter control decisions",
+  "scheduler": {
+    "factor": 0.5,
+    "patience": 20,
+    "threshold": 0.0001,
+    "threshold_mode": "abs",
+    "cooldown": 10,
+    "minimum_lr_ratio": 0.0625,
+    "eps": 1e-12
+  },
+  "interpretation": "Practical training-loss stability, not proof of first-order stationarity or generalization",
+  "tolerance_rationale": "Over 19 intervals, tolerate at most 1e-4 nats per record fitted change and 5e-4 range near zero; retain original relative bounds when stricter absolute precision is unnecessary. Freeze these engineering tolerances before prospective runs; historical sensitivity is explicitly retrospective."
+}

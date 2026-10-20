@@ -1,0 +1,16 @@
+{
+  "definition": {
+    "algorithm": "original-half-stratified-validation-v1",
+    "clients": 20,
+    "dataset_sha256": "0975380dce0bc339340ec746671cb59bbb562f7589038dbd359f39556ca0d2db",
+    "protocol_sha256": "b9da58443c898832df30c465970b6efa6baf8008e6527ec3b51e7db271fc56e4",
+    "seed": 686
+  },
+  "global_members": "optimization training records only",
+  "local_nonmembers": "all records outside that client optimization partition",
+  "records_per_client": 180,
+  "sha256": "5a16ec86fd3e9194d9d61b621d6ba3e86845ed27e8efdd34c0a7af4a54f4ee35",
+  "test_records": 4500,
+  "training_records": 3600,
+  "validation_records": 900
+}

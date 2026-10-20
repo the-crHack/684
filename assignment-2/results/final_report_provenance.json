@@ -1,0 +1,84 @@
+{
+  "campaign_root": "/work/pi_juanzhai_umass_edu/chetan/684/assignment-2-20261011/full-campaign-final-20261011",
+  "source_snapshot": "/work/pi_juanzhai_umass_edu/chetan/684/assignment-2-20261011/full-campaign-final-20261011/source_snapshot",
+  "current_audit_sha256": "224540d3c22db3abb4a24f222b658dc32b0f1a7b0cf2049b9aa853ee401d8c76",
+  "historical_submission_archive": "/work/pi_juanzhai_umass_edu/chetan/684/assignment-2-20261011/full-campaign-final-20261011/submission-before-final-report",
+  "historical_archive_manifest_sha256": "f85de05f20550227470fb054d0d8a0a0968e45e878d6356824ce709d353d12f5",
+  "original_k1_baseline": {
+    "train_cross_entropy": 0.00028124824866973335,
+    "test_cross_entropy": 1.2752976521953572,
+    "test_auroc": 0.7111574286339772
+  },
+  "original_status_sha256": "eecc52fda359319a84b6be2f4d7482fa7d00ee3b3c597b1cd9d887eaadf9c58e",
+  "new_training_runs": 72,
+  "reused_baseline_training_runs": 12,
+  "training_job": 65575479,
+  "audit_job": 65575480,
+  "stopping_counts": {
+    "capped": 3,
+    "early_stopped": 9,
+    "loss_stable": 72
+  },
+  "selected_and_last_models_rescored": 168,
+  "first_round_models_rescored": 1785,
+  "raw_roc": {
+    "path": "/work/pi_juanzhai_umass_edu/chetan/684/assignment-2-20261011/full-campaign-final-20261011/analysis/results/roc_points_all_models.csv.gz",
+    "sha256": "bdc316d08d0acffea29ecb20070eee0a482bbc31f328fd49b8f7cb876df9f111"
+  },
+  "gradient_diagnostics": {
+    "runs": 84,
+    "minimum_endpoint_to_initial_ratio": 0.013714347311781075,
+    "maximum_endpoint_to_initial_ratio": 0.4859587475256561,
+    "source": "audited status.json initial_gradient and last_gradient"
+  },
+  "meaning": "Loss stability belongs to optimization endpoints; predictive metrics belong to validation-selected checkpoints. Validation/test are nonmembers for the first-round SGD-membership attack. Validation influences later selection and is not an overall privacy holdout.",
+  "dataset_regenerated": false,
+  "assignment_1_modified": false,
+  "published": false,
+  "report_body_pages": 4,
+  "reference_pages": 1,
+  "report_total_pages": 5,
+  "cleanup_revision": {
+    "passed": true,
+    "removed_files": 68,
+    "remaining_submission_files": 82,
+    "training_sources_unchanged": 12,
+    "final_numeric_results_unchanged": true,
+    "dataset_unchanged": true,
+    "final_partitions_verified": 12,
+    "report_and_slide_unchanged": true,
+    "report_renderer_reproduces_exact_sources_figures_and_analysis": true,
+    "syntax_and_notebook_cells_valid": true,
+    "assignment_1_unchanged": true,
+    "report_total_pages": 5,
+    "slide_pages": 1,
+    "regression_tests_passed": 46,
+    "regression_seconds": 39.888,
+    "regression_job": 65578120,
+    "regression_log": "/work/pi_juanzhai_umass_edu/chetan/684/assignment-2-20261011/full-campaign-final-20261011/submission-cleanup-20261012/regression.log",
+    "regression_log_sha256": "16efa22529f1f216858539ac24811c157d1d86ed22ba457ae70fb268a54fd606",
+    "historical_files_archive": "/work/pi_juanzhai_umass_edu/chetan/684/assignment-2-20261011/full-campaign-final-20261011/taskc-fivepage-20261012/after",
+    "cleanup_review_archive": "/work/pi_juanzhai_umass_edu/chetan/684/assignment-2-20261011/full-campaign-final-20261011/submission-cleanup-20261012",
+    "prior_manifest_sha256": "ebf5b49cb661a0ffa4c8094aca1bec0a9aa92625d0ecc8b8d908f563aaa456ea",
+    "completed_utc": "2026-10-12T01:44:12.513403+00:00"
+  },
+  "presentation": {
+    "plots_seed": 684,
+    "table_and_analysis_seeds": [
+      684,
+      685,
+      686
+    ],
+    "report_body_pages": 4,
+    "reference_pages": 1,
+    "report_total_pages": 5,
+    "slide_pages": 1,
+    "assignment_lead": "Chetan Kodand Reddy Madadi",
+    "team_members": [
+      "Bharat Govil",
+      "Naveen Jarpla",
+      "Vishnu Fnu"
+    ],
+    "central_synthetic_validation_is_simulation_assumption": true
+  }
+}

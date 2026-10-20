@@ -1,0 +1,79 @@
+﻿Assignment 1: Membership Inference Attacks (MIA)
+
+
+Assignment Goals:
+* Implement and evaluate the LiRA attack
+* Discuss practicality and implications of MIA
+
+
+Threat model: Grey-box
+* The attacker can access the output of the target model (e.g., logits, loss)
+* The attacker knows the target model's architecture and training procedures
+* The attacker doesn't know the target model's weights or which data records were used to train the target model.
+* The attacker only has access to a different set of data (but still from the same distribution).
+
+
+Coding Assignment
+
+
+Task A: Prepare dataset and train target model (30pts)
+* Collect your own dataset for your start-up:
+   * Sample size: Collect/Generate at least 3000 samples and randomly split into one-third for training and two-third for test.
+   * Labels: All data points must be cleanly labelled for classification.
+   * Use case representation: The dataset should reflect a realistic privacy-sensitive use case in line with your startup idea(s). For example:
+      * Healthcare: Patient info, x-rays, etc.
+      * Education: Profile images, application essays, etc.
+      * Shopping: Product images, reviews
+   * Data sources: Two options:
+      * Use a publicly available and permissible dataset for academic purposes.
+      * You can also synthesize your own data (highly recommended to ground the synthesis process with some real seed data). Synthesis is good when there's not enough of the kind of data that you need.
+* Train target model for performing MIA:
+   * Use a reasonably efficient model architecture that you can actually run with your available hardware multiple times.
+   * Adapt the model to your task and train it on the training split of your data. (Don't use the test split here.)
+   * If your chosen model is pretrained, make sure your prepared dataset was not included in the pretraining data. Also, you don't have to train the entire model.
+* Tips:
+   * HuggingFace is a good start to find both models and datasets. For example: image classification models
+   * Google Colab provides free (limited) access to GPU.
+   * Keep your training pipeline as reusable and efficient as possible, we'll be training a lot of models for the MIA attack.
+Task B: Implement offline LiRA (from Membership Inference Attacks From First Principles paper) (40pts)
+* Implement the baseline LOSS attack in the paper:
+   * Evaluate the target model on your full dataset, recording the negative loss (i.e., confidence) for each data record, e.g. -loss(f(x), y)
+   * Use these negative loss scores as the MIA signal to plot the ROC and report the balanced accuracy, AUC, and TPR @ x% FPR where x = 0.1%, 1%, 5%, 10% percent.
+   * Do these steps again but with a different MIA signal, such as the model's output logits, and compare the MIA metrics to the other signal.
+* Implement LiRA:
+   * Implement the offline version of Algorithm 1 of the paper. Train N=128 shadow models (same architecture as target model), each on a different random half of the test split (this ensures there's no overlap with the train split used by the target model). Important: The training should only take place once, not per-target sample, since we are operating in offline mode.
+   * Run LiRA on the entire dataset (train + split). Compare your attack's performance to the baseline LOSS attack.
+* Ablation (This should be a pretty efficient ablation if you do this right):
+   * What's the effect of the number of shadow models on the MIA metrics?
+   * What's the effect of under/overfitting of the target model on the MIA metrics.
+
+
+Task C: Discussion: MIA for Generative AI (30pts)
+* MIA for frontier generative AI models is notoriously difficult. Some research even claims that it's not possible. Discuss the following open-ended questions, and make sure to provide citations when appropriate:
+   * What makes MIA harder for generative models than for classifiers?
+   * How does the modality of the input matter?
+   * Who would be interested in developing a successful MIA for these models, and why?
+   * What can an attacker do to enhance MIA success against generative models?
+   * What would be the societal impacts of a successful MIA? Provide real-world examples.
+* Tips:
+   * There is not necessarily a single correct answer, or even a correct answer.
+   * The entire team should contribute to this discussion.
+* Some relevant papers:
+   * Exploring the limits of strong membership inference attacks on large language models (NeurIPS 2025)
+   * Outputs of generative diffusion models are often unattributable (Nature Comm. 2026)
+
+
+
+
+Deliverables
+* Push your code and data to your team's github repo. You must include a README.md that explains your code and how to install and run it.
+   * If you use Google Colab, you can click on File -> Download -> Download .py, then put it in your repo.
+* A report in PDF format to describe in detail your approach, the results of the coding assignment, and your answers to the discussion questions.
+* 1 slide to highlight your work and findings, to be included in the shared weekly presentation Google Slide (link on Canvas).
+
+
+Extra Credits
+* Extra credits will be awarded (up to 5pts max) for outstanding efforts in any of the following:
+   * Data preparation effort and novelty.
+   * Implementation of additional variations of LiRA (e.g., the online version) or ablation experiments like in the paper.
+   * Depth and thoroughness of your discussion.

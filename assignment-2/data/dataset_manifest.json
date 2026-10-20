@@ -1,0 +1,36 @@
+{
+  "created_utc": "2026-10-11T17:22:00.568141+00:00",
+  "derived_columns": [
+    "change",
+    "diabetesMed"
+  ],
+  "generation_identity": {
+    "code_sha256": "04d6176987ab897b507134d5891f18b850ca69f5558f6506cc1efac5c0877989",
+    "schema_sha256": "2a65222f76a9d26daab47a1b57df041089ada3647edfbc310ab759de5bc69944",
+    "settings": {
+      "batch_size": 1024,
+      "depth": 4,
+      "device": "cuda",
+      "diffusion_steps": 200,
+      "ema_decay": 0.999,
+      "learning_rate": 0.0002,
+      "records": 9000,
+      "sample_batch_size": 2048,
+      "seed": 684,
+      "torch_version": "2.5.1+cu124",
+      "train_steps": 20000,
+      "width": 512
+    },
+    "source_sha256": "f82ac129da2ddd2299391ff6fbae3a6a58b3edcf59ac9d7bd480c00fe453112a"
+  },
+  "generator": "class_conditional_tabddpm",
+  "label_definition": "1: readmitted <30 days; 0: >30 or NO",
+  "n_records": 9000,
+  "positive_count": 1010,
+  "preprocessor_fit_population": "public UCI generator seed records, not synthetic FL records",
+  "preprocessor_sha256": "416bfb8467b1ac727347e8f023856a9cbe501a2e0293279cde827d804251e023",
+  "regenerated_for_assignment_2": true,
+  "schema_sha256": "2a65222f76a9d26daab47a1b57df041089ada3647edfbc310ab759de5bc69944",
+  "sha256": "0975380dce0bc339340ec746671cb59bbb562f7589038dbd359f39556ca0d2db",
+  "source_sha256": "f82ac129da2ddd2299391ff6fbae3a6a58b3edcf59ac9d7bd480c00fe453112a"
+}

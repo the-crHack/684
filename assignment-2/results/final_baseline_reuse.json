@@ -1,0 +1,235 @@
+{
+  "passed": true,
+  "runs": [
+    {
+      "batch_size": 32,
+      "clients": 1,
+      "config_id": "k01_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "rounds": 197,
+      "seed": 684,
+      "source": "/work/pi_juanzhai_umass_edu/chetan/684/assignment-2-20261011/regularized-stopping-v3-20261011/runs/wd0.01_k01_seed684",
+      "source_artifact_sha256": {
+        "checkpoint.pt": "991198a1378b126af15288b7ad5f6acb7eefba72a2e418ecbbddb8e273170dd0",
+        "history.csv": "33bdb7d2de8d2c8cc38dc78b3aa5c91ab3115e5785706df20db748dd83b27f73",
+        "manifest.json": "c230cada82ed8a98e92dceecde03c37529084009e8f5bf4e173203df5f78da8c",
+        "selected.pt": "56780f598fac980f396931cc601911aed78ec7db871a1b7a6f61d89ad1cd52bf",
+        "status.json": "fb705cda9e7663454369f80e9ad28c5b4c3e6a96dbad436af8b40733967490a2"
+      },
+      "training_rerun": false,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 1,
+      "config_id": "k01_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "rounds": 160,
+      "seed": 685,
+      "source": "/work/pi_juanzhai_umass_edu/chetan/684/assignment-2-20261011/regularized-stopping-v3-20261011/runs/wd0.01_k01_seed685",
+      "source_artifact_sha256": {
+        "checkpoint.pt": "207c8df9d5af77707c989c6ae9ea1be29d90cedad17dc9cf70eaa27b2345cd0c",
+        "history.csv": "edbf4ca5b5a4bde8fc29f68c25669373eb9babc50952b216996d923497d23e3f",
+        "manifest.json": "eac0d9c0060186ea2ee8c772807c71deb8ecb8e836897a2124b9906203ba1384",
+        "selected.pt": "a12ff32ad3f13ecfda0ab5b08230733e1dc24403fa8189eb5178898f38c8e7e5",
+        "status.json": "891bfb1f2034f7018d123830e769917633f8876e6ea1b3eeec141bd517279eeb"
+      },
+      "training_rerun": false,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 1,
+      "config_id": "k01_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "rounds": 144,
+      "seed": 686,
+      "source": "/work/pi_juanzhai_umass_edu/chetan/684/assignment-2-20261011/regularized-stopping-v3-20261011/runs/wd0.01_k01_seed686",
+      "source_artifact_sha256": {
+        "checkpoint.pt": "bf1a278a8d9c4d484d2dd18851475fa7564916f475a78f91ae67d215cf900d7a",
+        "history.csv": "aafb18a38b5963fd64b0db80abd8c44d11bd65e02ecac652ac992d2ee2fb21b8",
+        "manifest.json": "af194316b24373d9b7114e1d6714fbe35453dda84865d65484a504a7417d302d",
+        "selected.pt": "e0b9767c6781a94e497454eef4e0d4284791c2a795934cde59ede2a45d03ef9d",
+        "status.json": "9947f65d8be27da967328c6309a985ddcaffc66cfd37029affd15831735b80fe"
+      },
+      "training_rerun": false,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 10,
+      "config_id": "k10_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "rounds": 189,
+      "seed": 684,
+      "source": "/work/pi_juanzhai_umass_edu/chetan/684/assignment-2-20261011/regularized-stopping-v3-20261011/runs/wd0.01_k10_seed684",
+      "source_artifact_sha256": {
+        "checkpoint.pt": "ccd3e957101c424f5f39a45b3126f0359d15229e4e288aac42c8d0ddef565785",
+        "history.csv": "f7abd55e554ae3ec835f1032cc45b534cbe2dcaa579e25262c52391ed067062e",
+        "manifest.json": "7505956e096b1f1af2cd636bea474434c0bfdd0f0957192b84674beea7db0411",
+        "selected.pt": "aa3ab354b322cef6eae05dd95a555f7ed78ce6a27fba8f27a272c5425d116d1b",
+        "status.json": "2d549be4141dd34ef4bddca13b849bdd1d3a5509a162e7a06c624f23e0831387"
+      },
+      "training_rerun": false,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 10,
+      "config_id": "k10_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "rounds": 179,
+      "seed": 685,
+      "source": "/work/pi_juanzhai_umass_edu/chetan/684/assignment-2-20261011/regularized-stopping-v3-20261011/runs/wd0.01_k10_seed685",
+      "source_artifact_sha256": {
+        "checkpoint.pt": "09f42ec26fb8adbcbfc56575aeaa142971abfa1efaebd7d83943e36852351fa6",
+        "history.csv": "7401e3505e3f616145d5e73955974d32c396e8bd534ccfa3e2bd26514989aac3",
+        "manifest.json": "e7506f33cc6e3597ecb910e7e5ac88d991be50d699879c1dbd3aff581cfcdaef",
+        "selected.pt": "8d69ff58690ec7fbca472bb816f2f46da9dbd199334dfc203e119c9786a9a06e",
+        "status.json": "62cd22e0e9f9b42ad30a3d192d1160499854c246e5d726932f275fed080b5a9a"
+      },
+      "training_rerun": false,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 10,
+      "config_id": "k10_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "rounds": 174,
+      "seed": 686,
+      "source": "/work/pi_juanzhai_umass_edu/chetan/684/assignment-2-20261011/regularized-stopping-v3-20261011/runs/wd0.01_k10_seed686",
+      "source_artifact_sha256": {
+        "checkpoint.pt": "58e97f90737e91fadf52bf5359fbad99539d7eb84a76b599b525a44c479b4517",
+        "history.csv": "df4680c37076286faa54bc8fc0823bf4e462e67c6f199ad6ae62552e0a10f47e",
+        "manifest.json": "49076e2b031c47db4e0a91f0b146c5ce82eb34fc9822f02a9c6f9a96fdd06459",
+        "selected.pt": "91a61d24e5946d57476caa0dbd14421b9a8d17233cceb7587ca632a63307eb96",
+        "status.json": "4c50578b76e4c35bb3d223f3966706f292d68255446d976f76ed6383367de7d8"
+      },
+      "training_rerun": false,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 20,
+      "config_id": "k20_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "rounds": 224,
+      "seed": 684,
+      "source": "/work/pi_juanzhai_umass_edu/chetan/684/assignment-2-20261011/regularized-stopping-v3-20261011/runs/wd0.01_k20_seed684",
+      "source_artifact_sha256": {
+        "checkpoint.pt": "742e595acaeca4508a6265edab7937308e11879b0458c899f5fc2c146a942820",
+        "history.csv": "4dcecad7904a27a6dc04be7cecfc6e580306cf44cc4fea6ffd45d3109c65234e",
+        "manifest.json": "0dbd999c51b443039db96739ccf6c29eec8ab164390ca0637e16479f6f84619d",
+        "selected.pt": "100d2377b5d1d8dd286e10963e11162ce84cf9945b4fbe5f96a3a4d1c891d0c5",
+        "status.json": "d63b248aa3bc3fa7f95ad14dc8bb147bc947e28f4349c7af67a623bb69fdefa2"
+      },
+      "training_rerun": false,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 20,
+      "config_id": "k20_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "rounds": 191,
+      "seed": 685,
+      "source": "/work/pi_juanzhai_umass_edu/chetan/684/assignment-2-20261011/regularized-stopping-v3-20261011/runs/wd0.01_k20_seed685",
+      "source_artifact_sha256": {
+        "checkpoint.pt": "01a33f3cbdbbc7e72eac6e727f64833d80dfa541c760d2b8e8cb78a66b7d5da0",
+        "history.csv": "3b2167883887906fcd3f5d2362cbdfa40933cb66a19ec0c3cfcc860aff5d2da1",
+        "manifest.json": "52c54b675fc871068d89033e4cb75975d49eb7da9a8bc8c41cca770f9c7fdf13",
+        "selected.pt": "3d9058c3b50a38f3223bc91efcfde76ec9bacd7d7f000f83b5180920e66895f0",
+        "status.json": "045159342c78cbac25851f6cb75ab49679c7b69eeeae7576bd350392490cd2eb"
+      },
+      "training_rerun": false,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 20,
+      "config_id": "k20_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "rounds": 184,
+      "seed": 686,
+      "source": "/work/pi_juanzhai_umass_edu/chetan/684/assignment-2-20261011/regularized-stopping-v3-20261011/runs/wd0.01_k20_seed686",
+      "source_artifact_sha256": {
+        "checkpoint.pt": "25b9a78d48f869654d41d80bc149450acf5aeeb6fa4cd46ad8d858fed4fa28e3",
+        "history.csv": "6462265350958b5e3bfcd1b352dc93fd33f46ef2b1ba76480af9434524a3b5fc",
+        "manifest.json": "1c711762325070c63f6a05e2efbf9bc2c104a3ac9564b10a196bf932de70df3f",
+        "selected.pt": "628e2f43b2d77b20939647347ad77a104a31e609c87a5d3c3f7f826bdf1e338a",
+        "status.json": "b11986823035d70d3da961acff400e413f8eb18252c01f9cb13014e07a370912"
+      },
+      "training_rerun": false,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 50,
+      "config_id": "k50_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "rounds": 234,
+      "seed": 684,
+      "source": "/work/pi_juanzhai_umass_edu/chetan/684/assignment-2-20261011/regularized-stopping-v3-20261011/runs/wd0.01_k50_seed684",
+      "source_artifact_sha256": {
+        "checkpoint.pt": "336f9602a00533a090b99959ecd1a31be944a555a9b904fdda47c9fbf2dcdde8",
+        "history.csv": "75abe14118b6052c15983b586572e991ca896c289f8c639f6f2770ee22f8edf0",
+        "manifest.json": "b26ee28b409cb1aea15f417635dd16a5efaa5148d291bd8fca9d2f5ec0864cde",
+        "selected.pt": "b178ee3430ede1e2889e16e1f1cb363d6b6da1a678fc6065ba7470daeb4c7a95",
+        "status.json": "2b38bfa2185018bf1209ca5212558cb76f339bd7c5e5ad5758c1602ac99898dc"
+      },
+      "training_rerun": false,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 50,
+      "config_id": "k50_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "rounds": 220,
+      "seed": 685,
+      "source": "/work/pi_juanzhai_umass_edu/chetan/684/assignment-2-20261011/regularized-stopping-v3-20261011/runs/wd0.01_k50_seed685",
+      "source_artifact_sha256": {
+        "checkpoint.pt": "b0d4d50b4a19e039265c4b9023c3b963f763337175931d76f55936f8a1d59be7",
+        "history.csv": "6fc1746e60ebdc962e67677f1e9032275a78702379a4cdb8e0e492c42ca44c2d",
+        "manifest.json": "47df0233396bbf28eb921d989701bef64390e25874250b82b92b14e8e261b9d1",
+        "selected.pt": "80b9773b1beaabd68223a84cd96bd08418737cb2fcd573ec75ba0e8e2ea0fc90",
+        "status.json": "6b37e370d647e23911cd8047b763efbc36a41a87803496f5cf2c05f926a1135b"
+      },
+      "training_rerun": false,
+      "weight_decay": 0.01
+    },
+    {
+      "batch_size": 32,
+      "clients": 50,
+      "config_id": "k50_b32_e1_lr0.05",
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "rounds": 203,
+      "seed": 686,
+      "source": "/work/pi_juanzhai_umass_edu/chetan/684/assignment-2-20261011/regularized-stopping-v3-20261011/runs/wd0.01_k50_seed686",
+      "source_artifact_sha256": {
+        "checkpoint.pt": "993f43143fcdf0443857102d0e50eeea771df47b41a76ecbadcbbc6cb93e196a",
+        "history.csv": "12bab4cf2f7453af06f039022991c5d4755b14756e86086accf625bc1a0b9687",
+        "manifest.json": "d1dd5ada9e1961a6aefd9b69872aea482cc2affbb42aa969fec2a271490ebba9",
+        "selected.pt": "9c312e937a5ad5e437d4d3981d378053ac9c3604cda76bb13e4139aacc6595dc",
+        "status.json": "fe7f470ec812ecd9ff87e480c57b18ca05f9d69030eb7cec5d9e06ae42c23101"
+      },
+      "training_rerun": false,
+      "weight_decay": 0.01
+    }
+  ],
+  "source_audit_sha256": "9afe1f6602f98e4c22d31d52124ee597abe971724a98392710c73d959d1c38ec",
+  "training_runs_reused": 12
+}
