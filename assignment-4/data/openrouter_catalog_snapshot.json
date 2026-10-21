@@ -1,0 +1,223 @@
+{
+  "checked_date": "2026-10-21",
+  "source": "https://openrouter.ai/api/v1/models",
+  "models": [
+    {
+      "id": "xingchen-agi/xing4.0-29b-a4b:free",
+      "canonical_slug": "xingchen-agi/xing4.0-29b-a4b-20261015",
+      "description": "Xing4.0-29B-A4B is an open-weight mixture-of-experts language model from China Telecom's AI team (TeleAI) and the successor to the TeleChat series. It has 29B total parameters with 4B active per token...",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "reasoning",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_p"
+      ],
+      "reasoning": {
+        "mandatory": false,
+        "default_enabled": true
+      },
+      "context_length": 262144
+    },
+    {
+      "id": "liquid/lfm-2.5-2.6b:free",
+      "canonical_slug": "liquid/lfm-2.5-2.6b-20260811",
+      "description": "LFM2.5-2.6B is a compact reasoning model from Liquid AI. It is suited for agent workflows, data extraction, RAG, and long-context processing. Liquid advises against using it for agentic coding or...",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logprobs",
+        "max_completion_tokens",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "reasoning",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_logprobs"
+      ],
+      "reasoning": {
+        "mandatory": true
+      },
+      "context_length": 65536
+    },
+    {
+      "id": "thinkingmachines/inkling:free",
+      "canonical_slug": "thinkingmachines/inkling-20260715",
+      "description": "Inkling is an open-weight multimodal mixture-of-experts model from Thinking Machines Lab, with 41B active parameters out of 975B total. It is designed for general-purpose reasoning, coding, agentic and tool-use systems,...",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "max_tokens",
+        "presence_penalty",
+        "reasoning",
+        "reasoning_effort",
+        "seed",
+        "stop",
+        "temperature",
+        "tools",
+        "top_p"
+      ],
+      "reasoning": {
+        "mandatory": false,
+        "default_enabled": true,
+        "supported_efforts": [
+          "max",
+          "high",
+          "medium",
+          "low",
+          "minimal",
+          "none"
+        ],
+        "default_effort": "high"
+      },
+      "context_length": 1048576
+    },
+    {
+      "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "canonical_slug": "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+      "description": "NVIDIA Nemotron 3 Ultra is an open frontier-reasoning and orchestration model from NVIDIA, with 55B active parameters out of 550B total (MoE). Built on a hybrid Transformer-Mamba mixture-of-experts architecture, it...",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "reasoning",
+        "reasoning_effort",
+        "seed",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_p"
+      ],
+      "reasoning": {
+        "mandatory": false,
+        "default_enabled": true,
+        "supports_max_tokens": true,
+        "supported_efforts": [
+          "high",
+          "medium",
+          "none"
+        ],
+        "default_effort": "high"
+      },
+      "context_length": 1000000
+    },
+    {
+      "id": "google/gemma-4-26b-a4b-it:free",
+      "canonical_slug": "google/gemma-4-26b-a4b-it-20260403",
+      "description": "Gemma 4 26B A4B IT is an instruction-tuned Mixture-of-Experts (MoE) model from Google DeepMind. Despite 25.2B total parameters, only 3.8B activate per token during inference \u2014 delivering near-31B quality at...",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "reasoning",
+        "response_format",
+        "seed",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_p"
+      ],
+      "reasoning": {
+        "mandatory": false,
+        "default_enabled": false
+      },
+      "context_length": 262144
+    },
+    {
+      "id": "nvidia/nemotron-3-super-120b-a12b:free",
+      "canonical_slug": "nvidia/nemotron-3-super-120b-a12b-20230311",
+      "description": "NVIDIA Nemotron 3 Super is a 120B-parameter open hybrid MoE model, activating just 12B parameters for maximum compute efficiency and accuracy in complex multi-agent applications. Built on a hybrid Mamba-Transformer...",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "reasoning",
+        "reasoning_effort",
+        "response_format",
+        "seed",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_p"
+      ],
+      "reasoning": {
+        "mandatory": false,
+        "default_enabled": true,
+        "supports_max_tokens": true,
+        "supported_efforts": [
+          "medium",
+          "low",
+          "none"
+        ],
+        "default_effort": "medium"
+      },
+      "context_length": 262144
+    },
+    {
+      "id": "nvidia/nemotron-3.5-super-vl:free",
+      "canonical_slug": "nvidia/nemotron-3.5-super-vl-20261015",
+      "description": "NVIDIA Nemotron 3.5 Super VL is an open multimodal mixture-of-experts model from NVIDIA, with 12B active parameters out of 120B total. It takes text, images, documents, GUI screenshots, and video...",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "reasoning",
+        "response_format",
+        "seed",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_p"
+      ],
+      "reasoning": {
+        "mandatory": false
+      },
+      "context_length": 1000000
+    }
+  ]
+}

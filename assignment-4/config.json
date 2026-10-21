@@ -1,0 +1,10 @@
+{
+  "base_url": "https://tinker.thinkingmachines.dev/services/tinker-prod/oai/api/v1",
+  "max_tokens": 3000,
+  "temperature": 0,
+  "models": [
+    {"model": "Qwen/Qwen3.5-4B", "total_parameters_billions": 4, "size_class": "compact", "efforts": ["low", "high"]},
+    {"model": "Qwen/Qwen3.8-27B", "total_parameters_billions": 27, "size_class": "medium", "efforts": ["low", "high"]},
+    {"model": "Qwen/Qwen3.5-397B-A17B", "total_parameters_billions": 397, "active_parameters_billions": 17, "size_class": "large", "efforts": ["low", "high"]}
+  ]
+}

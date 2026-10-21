@@ -1,0 +1,7 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+.venv/
+assignment-4/tmp/
+assignment-4/.codex-finalizer/

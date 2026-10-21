@@ -1,0 +1,14 @@
+{
+  "provider": "openrouter",
+  "api_key_env": "OPENROUTER_API_KEY",
+  "base_url_env": "OPENROUTER_BASE_URL",
+  "base_url": "https://openrouter.ai/api/v1",
+  "max_tokens": 3000,
+  "temperature": 0,
+  "min_interval_seconds": 4,
+  "models": [
+    {"model": "liquid/lfm-2.5-2.6b:free", "total_parameters_billions": 2.6, "size_class": "compact", "efforts": ["default"]},
+    {"model": "nvidia/nemotron-3.5-super-vl:free", "total_parameters_billions": 120, "active_parameters_billions": 12, "size_class": "medium", "efforts": ["default"]},
+    {"model": "nvidia/nemotron-3-ultra-550b-a55b:free", "total_parameters_billions": 550, "active_parameters_billions": 55, "size_class": "large", "efforts": ["medium", "high"]}
+  ]
+}
