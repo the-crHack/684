@@ -1,0 +1,12 @@
+{
+  "base_url": "https://tinker.thinkingmachines.dev/services/tinker-prod/oai/api/v1",
+  "max_tokens": 8192,
+  "temperature": 0,
+  "min_interval_seconds": 0.5,
+  "models": [
+    {"model": "Qwen/Qwen3.5-4B", "total_parameters_billions": 4, "size_class": "small_dense", "efforts": ["default"]},
+    {"model": "Qwen/Qwen3.8-27B", "total_parameters_billions": 27, "size_class": "medium_dense", "efforts": ["off", "on"]},
+    {"model": "openai/gpt-oss-120b", "total_parameters_billions": 117, "active_parameters_billions": 5.1, "size_class": "medium_moe", "efforts": ["low", "high"]},
+    {"model": "thinkingmachines/Inkling-Small", "total_parameters_billions": 276, "active_parameters_billions": 12, "size_class": "large_moe", "efforts": ["low"]}
+  ]
+}

@@ -10,13 +10,8 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 BASE_FIELDS = ["scenario_id", "scenario_summary", "sender", "receiver", "subject",
                "data_types", "transmission_principles", "is_appropriate", "reason", "scenario_text"]
-VARIANT_FIELDS = ["variant_id", "base_id", "attack_type", "edit_description", "changed_parameters",
+VARIANT_FIELDS = ["variant_id", "base_id", "base_difficulty", "attack_type", "edit_description", "changed_parameters",
                   "base_label", "expected_label", "why_label", "scenario_text"]
-# Authored labels are retained; these two cases also get a sensitivity analysis.
-REVIEW_FLAGS = {
-    "004a": "A scope-limited authorization does not itself rule out an independent treatment-disclosure basis; counseling notes are not necessarily separately maintained psychotherapy notes.",
-    "010b": "Replacing names/IDs/dates and privacy-officer review do not establish Safe Harbor or Expert Determination; a discharge month and residual attributes may remain identifying.",
-}
 
 def read_csv(path, fields):
     with path.open(newline="", encoding="utf-8-sig") as f:
@@ -29,8 +24,8 @@ def read_csv(path, fields):
     return rows
 
 def load_dataset():
-    base_path = HERE / "data/scenarios_base.csv"
-    variant_path = HERE / "data/scenarios_variants.csv"
+    base_path = HERE / "data/taskA_scenarios_10.csv"
+    variant_path = HERE / "data/taskB_variants_20.csv"
     bases = read_csv(base_path, BASE_FIELDS)
     variants = read_csv(variant_path, VARIANT_FIELDS)
     if len(bases) != 10 or {r["scenario_id"] for r in bases} != {f"{i:03d}" for i in range(1, 11)}:
@@ -48,12 +43,16 @@ def load_dataset():
     if len(variants) != 20 or len({r["variant_id"] for r in variants}) != 20:
         raise ValueError("Need 20 unique variants")
     relations = {sid: [] for sid in by_id}
+    difficulties = {}
     for row in variants:
         sid = row["base_id"]
         if sid not in by_id or not re.fullmatch(re.escape(sid) + "[ab]", row["variant_id"]):
             raise ValueError(f"Invalid variant/base join: {row['variant_id']}")
         if row["base_label"] != by_id[sid]["is_appropriate"] or row["expected_label"] not in {"0", "1"}:
             raise ValueError(f"{row['variant_id']}: inconsistent labels")
+        difficulty = row['base_difficulty']
+        if difficulty not in {'easy', 'medium', 'hard'} or difficulties.setdefault(sid, difficulty) != difficulty:
+            raise ValueError(f"{row['variant_id']}: inconsistent predicted difficulty")
         relations[sid].append(row["expected_label"] != row["base_label"])
     if any(sorted(v) != [False, True] for v in relations.values()):
         raise ValueError("Each base needs one keep-label and one flip variant")
@@ -66,13 +65,14 @@ def load_dataset():
     for row in bases:
         cases.append({"case_id": "base:" + row["scenario_id"], "base_id": row["scenario_id"],
                       "kind": "base", "attack_type": "base", "relation": "base",
-                      "expected": int(row["is_appropriate"]), "scenario_text": row["scenario_text"], "review_flag": False})
+                      "expected": int(row["is_appropriate"]), "scenario_text": row["scenario_text"],
+                      "predicted_difficulty": difficulties[row['scenario_id']]})
     for row in variants:
         cases.append({"case_id": "variant:" + row["variant_id"], "base_id": row["base_id"],
                       "kind": "variant", "attack_type": row["attack_type"],
                       "relation": "flip" if row["base_label"] != row["expected_label"] else "keep",
                       "expected": int(row["expected_label"]), "scenario_text": row["scenario_text"],
-                      "review_flag": row["variant_id"] in REVIEW_FLAGS})
+                      "predicted_difficulty": row['base_difficulty']})
     hashes = {path.name: hashlib.sha256(path.read_bytes()).hexdigest() for path in [base_path, variant_path]}
     return cases, hashes
 
@@ -81,4 +81,4 @@ if __name__ == "__main__":
     print(json.dumps({"base_count": 10, "variant_count": 20,
                       "base_word_counts": {c["base_id"]: len(c["scenario_text"].split()) for c in cases if c["kind"] == "base"},
                       "variants_by_attack_type": dict(Counter(c["attack_type"] for c in cases if c["kind"] == "variant")),
-                      "review_flags": REVIEW_FLAGS, "source_sha256": hashes}, indent=2))
+                      "source_sha256": hashes}, indent=2))

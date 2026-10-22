@@ -1,16 +1,15 @@
 """Evaluate authored base and variant documents through Tinker's chat API."""
 import argparse
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED
 import hashlib
 import json
 import os
-from pathlib import Path
 import time
 
 from dataset import HERE, load_dataset
 from prompts import messages
 
-RESULTS = HERE / "results/tinker"
+RESULTS = HERE / "results"
 
 def digest(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True).encode()).hexdigest()
@@ -46,7 +45,7 @@ def plan(config, cases, pipelines=("baseline", "improved")):
             for pipeline in pipelines:
                 for case in cases:
                     request = {
-                        "model": model.get("sampling_path", model["model"]),
+                        "model": model["model"],
                         "messages": messages(case["scenario_text"], pipeline),
                         "temperature": config["temperature"], "max_tokens": config["max_tokens"],
                         "extra_body": {"separate_reasoning": True},
@@ -77,8 +76,8 @@ def latest_records(path):
 
 def execute_request(job, config, key, client):
     """Execute one immutable job; callers serialize all writes to the audit log."""
-    record = {k: v for k, v in job.items() if k != 'request'}
-    record.update({'request': job['request'], 'base_url': config['base_url'], 'started_at_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())})
+    record = dict(job)
+    record.update({'base_url': config['base_url'], 'started_at_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())})
     start = time.monotonic()
     try:
         response = client.chat.completions.create(**job['request'])
@@ -88,6 +87,8 @@ def execute_request(job, config, key, client):
         choice = response.choices[0]
         record['finish_reason'] = choice.finish_reason
         record['raw_content'] = choice.message.content
+        # Keep only size metadata, never the private reasoning trace.
+        record['reasoning_characters'] = len(getattr(choice.message, 'reasoning_content', None) or '')
         try:
             record['prediction'] = parse_output(choice.message.content)
             record['status'] = 'ok'
@@ -106,6 +107,29 @@ def execute_request(job, config, key, client):
     record['latency_seconds'] = round(time.monotonic()-start, 3)
     return record
 
+
+def run_requests(pending, config, key, client, workers, smoke=False):
+    """Keep workers busy; after a provider error, drain and save in-flight calls."""
+    jobs = iter(pending)
+    stop = False
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        active = set()
+        while True:
+            while not stop and len(active) < workers:
+                job = next(jobs, None)
+                if job is None:
+                    break
+                active.add(pool.submit(execute_request, job, config, key, client))
+                time.sleep(config.get('min_interval_seconds', 0.5))
+            if not active:
+                break
+            done, active = wait(active, return_when=FIRST_COMPLETED)
+            for future in done:
+                record = future.result()
+                if record['status'] == 'api_error' and (not smoke or record.get('http_status') in {401, 402, 403}):
+                    stop = True
+                yield record
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--smoke-test", action="store_true", help="Test one base case per model/effort setting")
@@ -114,10 +138,17 @@ def main():
     parser.add_argument("--pipeline", choices=["baseline", "improved", "both"], default="both")
     parser.add_argument("--max-new-requests", type=int)
     parser.add_argument("--retry-errors", action="store_true")
+    parser.add_argument("--model", action="append", help="Limit inference to this configured model ID; repeatable")
     args = parser.parse_args()
     if args.max_new_requests is not None and args.max_new_requests < 1:
         parser.error("--max-new-requests must be positive")
-    config = load_config()
+    complete_config = load_config()
+    config = complete_config
+    if args.model:
+        unknown = set(args.model) - {m['model'] for m in config['models']}
+        if unknown:
+            parser.error(f'Unknown model IDs: {sorted(unknown)}')
+        config = {**config, 'models': [m for m in config['models'] if m['model'] in args.model]}
     cases, hashes = load_dataset()
     pipelines = ["baseline", "improved"] if args.pipeline == "both" else [args.pipeline]
     jobs = smoke_jobs(config, cases) if args.smoke_test else list(plan(config, cases, pipelines))
@@ -149,26 +180,28 @@ def main():
     from openai import OpenAI
     RESULTS.mkdir(parents=True, exist_ok=True)
     stop = False
-    with OpenAI(api_key=key, base_url=config["base_url"], timeout=180, max_retries=0) as client:
-        with ThreadPoolExecutor(max_workers=args.workers) as pool:
-            for offset in range(0, len(pending), args.workers):
-                futures = []
-                for job in pending[offset:offset+args.workers]:
-                    job = {**job, "source_sha256": hashes, "phase": "smoke" if args.smoke_test else "evaluation"}
-                    futures.append(pool.submit(execute_request, job, config, key, client))
-                    time.sleep(config.get("min_interval_seconds", 0.5))
-                for future in as_completed(futures):
-                    record = future.result()
-                    with path.open("a") as f:
-                        f.write(json.dumps(record)+"\n")
-                    latest[record["run_id"]] = record
-                    print(f"{record['model']} {record['effort']} {record['pipeline']} {record['case_id']}: {record['status']}", flush=True)
-                    if record["status"] == "api_error":
-                        print(f"  {record.get('error_type')} HTTP {record.get('http_status')}: {record.get('provider_error_message', 'Connection or provider error')}", flush=True)
-                        if not args.smoke_test or record.get("http_status") in {401, 402, 403}:
-                            stop = True
-                if stop:
-                    break
+    pending = [{**job, 'source_sha256': hashes, 'phase': 'smoke' if args.smoke_test else 'evaluation'} for job in pending]
+    # Freeze the inputs and settings beside this experiment's results.
+    inputs = RESULTS/'inputs'
+    inputs.mkdir(exist_ok=True)
+    snapshots = {name: (HERE/'data'/name).read_bytes() for name in hashes}
+    snapshots['config.json'] = json.dumps(complete_config, indent=2).encode()+b'\n'
+    snapshots['prompts.py'] = (HERE/'prompts.py').read_bytes()
+    for name, content in snapshots.items():
+        destination = inputs/name
+        if destination.exists() and destination.read_bytes() != content:
+            raise SystemExit(f'{name} changed during this experiment; use a new results directory.')
+        destination.write_bytes(content)
+    with OpenAI(api_key=key, base_url=config['base_url'], timeout=180, max_retries=0) as client:
+        for record in run_requests(pending, config, key, client, args.workers, args.smoke_test):
+            with path.open('a') as f:
+                f.write(json.dumps(record)+'\n')
+            latest[record['run_id']] = record
+            print(f"{record['model']} {record['effort']} {record['pipeline']} {record['case_id']}: {record['status']}", flush=True)
+            if record['status'] == 'api_error':
+                print(f"  {record.get('error_type')} HTTP {record.get('http_status')}: {record.get('provider_error_message', 'Connection or provider error')}", flush=True)
+                if not args.smoke_test or record.get('http_status') in {401, 402, 403}:
+                    stop = True
     if args.smoke_test:
         passed = sum(latest.get(j["run_id"], {}).get("status") == "ok" for j in jobs)
         print(f"Smoke tests: {passed}/{len(jobs)} schema-valid responses.")
