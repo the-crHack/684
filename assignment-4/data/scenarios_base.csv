@@ -1,0 +1,150 @@
+"scenario_id","scenario_summary","sender","receiver","subject","data_types","transmission_principles","is_appropriate","reason","scenario_text"
+"001","A hospitalist sends an inpatient endocrinology consult request through the EHR.","Dr. Maya Chen (attending physician, Riverside Hospital)","Dr. Omar Patel (consulting endocrinologist, Riverside Hospital)","Elena Brooks (hospital inpatient)","[('patient_name', 'Elena Brooks'), ('encounter_id', 'ENC-1042'), ('room', '413'), ('HbA1c', '10.2%'), ('home_medication', 'metformin'), ('glucose_readings', 'above 300 mg/dL overnight'), ('admission_reason', 'uncontrolled blood glucose')]","authenticated EHR clinical messaging, treatment purpose, recipient is a consulting clinician on the care team","1","Provider-to-provider exchange for treatment is a core norm of clinical care and is permitted under HIPAA without separate patient authorization. The recipient is consulted for this patient's care and the channel is the access-controlled clinical record.","From: Dr. Maya Chen, Internal Medicine
+To: Dr. Omar Patel, Endocrinology
+Date: October 16, 2026
+Subject: Inpatient consult request - Elena Brooks (ENC-1042)
+Sent via: Riverside EHR clinical messaging
+
+Omar,
+
+Thanks for taking this one. Elena Brooks is in 413, admitted yesterday with uncontrolled glucose. Her A1c is 10.2% and her home regimen is metformin alone, but her overnight readings stayed above 300 even after we started correction-scale insulin. No ketones, renal function is normal.
+
+Could you see her today and advise whether we should move to basal-bolus dosing? I'd also like your recommendation on outpatient follow-up before we discharge her, probably Thursday. Please put your recommendations in the chart so nursing can pick them up on the evening shift.
+
+Thanks,
+Maya"
+"002","A support agent sends a verified patient his own lab results through the secure portal.","Lena Ortiz (patient-support agent, SynthHealth)","Gabriel Santos (patient who requested his results)","Gabriel Santos (the same patient)","[('patient_name', 'Gabriel Santos'), ('lab_test', 'lipid panel and HbA1c'), ('result_date', '2026-10-08'), ('HbA1c', '7.4%'), ('LDL', '131 mg/dL')]","authenticated patient portal message, identity verified with date of birth and one-time code, patient-initiated request, subject is the recipient","1","Patients have a right to access their own health records. The agent verified the requester's identity, and the data go only to the person they describe through an access-controlled channel.","Portal Message - Patient Support
+From: Lena Ortiz, SynthHealth Patient Support
+To: Gabriel Santos
+Date: October 18, 2026
+Re: Your request for lab results
+
+Hi Gabriel,
+
+Thank you for confirming your date of birth and entering the code we texted to your phone on file. As you asked, I've attached the results from your October 8 visit.
+
+Your HbA1c was 7.4% and your LDL cholesterol was 131 mg/dL. The full lipid panel is on page 2 of the attachment. Your care team at Riverside will review these results with you at your follow-up on the 29th, so please bring any questions then. If you'd like these sent to a different provider, you can submit a release form in the portal under ""Records.""
+
+If anything in the file looks wrong or you can't open it, reply to this message and I'll resend it.
+
+Best,
+Lena"
+"003","A night-shift nurse hands off a patient's status to the assigned day-shift nurse through the EHR handoff report.","Sofia Marin (registered nurse, night shift, 3 West)","Tom Okafor (registered nurse, day shift, assigned to the patient)","Dana Whitfield (post-surgical inpatient, bed 14)","[('patient_name', 'Dana Whitfield'), ('age_sex', '58F'), ('procedure', 'bowel resection, hospital day 3'), ('medications', 'acetaminophen, oxycodone PRN'), ('vitals', 'max temp 99.1 F'), ('labs', 'potassium 3.4'), ('wound_status', 'slight incision drainage')]","EHR handoff report visible only to assigned nurses, treatment continuity, shift change","1","Clinical handoff between nurses responsible for the same patient is a standard part of care continuity and a permitted treatment disclosure. The recipient is assigned to this patient and the report is access-restricted to assigned staff.","Shift Handoff Note - 3 West Medical-Surgical
+Date: October 16, 2026, 06:50
+From: Sofia Marin, RN (night shift)
+To: Tom Okafor, RN (day shift, assigned to beds 12-15)
+Delivery: EHR handoff report, visible to assigned nurses only
+
+Bed 14 - Dana Whitfield, 58F, hospital day 3 after bowel resection.
+
+Overnight: Pain controlled with scheduled acetaminophen plus one PRN oxycodone dose at 03:10 with good effect. Max temp 99.1 F. Walked the hallway twice with assistance. Tolerating clear liquids, no nausea.
+
+To do today: Advance her diet per the surgical team's order if she tolerates breakfast. Check the incision dressing at 09:00; there was slight drainage on the lower edge, which I marked at 04:00. Recheck potassium at 08:00 (3.4 yesterday, replaced).
+
+Let me know if you'd like to walk the room together before I leave at 07:15.
+
+Sofia"
+"004","A hospital records office releases a patient's records to her new physician under a valid signed authorization.","Marta Reyes (release of information specialist, Riverside Hospital)","Dr. Lisa Wong (new primary care physician)","Priya Nair (patient transferring primary care)","[('patient_name', 'Priya Nair'), ('date_of_birth', '1988-06-14'), ('problem_list', 'included'), ('medication_list', 'included'), ('lab_results', '2024-2026'), ('discharge_summary', '2025'), ('imaging_reports', 'included')]","secure fax to verified number, written patient authorization naming the recipient, authorization covers the released content, within validity period, continuity-of-care purpose","1","The patient signed an authorization that names the recipient, covers the full record, and is still valid. Releases to a new treating physician at the patient's direction are standard and permitted.","From: Marta Reyes, Release of Information, Riverside Hospital
+To: Dr. Lisa Wong, Wong Family Medicine
+Date: October 19, 2026
+Subject: Records release - Priya Nair
+Delivery: Secure fax (number verified by phone with your office)
+
+Dr. Wong,
+
+Enclosed are the records for Priya Nair (DOB 06/14/1988), as requested by your office on October 16. Riverside has on file a signed authorization dated October 2, 2026, in which Ms. Nair names Dr. Lisa Wong as her new primary care physician and authorizes release of her complete medical record from Riverside for continuity of care. The authorization is valid through October 2, 2027.
+
+The packet includes the problem list, medication list, lab results from 2024 to 2026, the 2025 discharge summary, and imaging reports. Please call our office if any pages are missing or illegible.
+
+Regards,
+Marta Reyes"
+"005","A billing specialist sends the insurer a corrected claim containing only claim-related fields.","Daniel Price (billing specialist, Riverside Hospital Patient Financial Services)","Erin Cole (claims adjudicator, contracted health insurer)","Avery Ross (patient with an open insurance claim)","[('patient_name', 'Avery Ross'), ('claim_number', 'CLM-7718'), ('service_code', '99223'), ('date_of_service', '2026-10-09'), ('billing_error', 'duplicate service line')]","authenticated insurer claims portal, payment purpose, limited claim fields, audit logging","1","Disclosures to a payer for payment are a permitted and expected part of health care billing. The recipient has a payment role, and only the fields needed to match and correct the claim are sent, consistent with minimum-necessary norms.","From: Daniel Price, Patient Financial Services
+To: Erin Cole, Claims Resolution
+Date: October 19, 2026
+Subject: Corrected claim - CLM-7718 (Avery Ross)
+Delivery: Insurer claims portal
+
+Hi Erin,
+
+Claim CLM-7718 for Avery Ross (date of service 10/09/2026) went out with CPT 99223 on two separate lines, but the service was only performed once. I've uploaded a corrected claim with line 2 removed, along with our original submission ID so you can match it to the existing record.
+
+Could you confirm the duplicate line will be reversed and that the correction won't trigger a second payment request? If the adjustment needs a different form on your side, let me know and I'll resubmit today.
+
+Our system logged the correction, so you can reference the portal submission number when you reply.
+
+Thanks,
+Daniel"
+"006","A start-up growth analyst sends identifiable diabetes patient records to an ad agency to build a lookalike audience.","Evan Brooks (growth analyst, SynthHealth)","Claire Foster (account manager, BrightReach Advertising, external agency)","Rosa Bennett and other Riverside diabetes patients in the export","[('patient_name', 'Rosa Bennett'), ('diagnosis', 'type 2 diabetes'), ('email', 'rosa.bennett@example.test'), ('last_visit', '2026-10-11')]","regular email attachment, marketing purpose, identifiable patient-level export, third-party reuse","0","Hospital data held for analytics services cannot be repurposed for advertising. Marketing use of identifiable health information requires patient authorization, the agency has no care, payment, or service role, and an ordinary email attachment offers no protection.","From: Evan Brooks, Growth, SynthHealth
+To: Claire Foster, BrightReach Advertising
+Date: October 14, 2026
+Subject: Diabetes wellness campaign - audience upload
+Attachment: october_hospital_visits.csv
+
+Hi Claire,
+
+Per our call, attached is the October export from the Riverside analytics feed: everyone with a diabetes diagnosis and a visit in the last 30 days. Columns are name, email, diagnosis, and last visit date. For example, Rosa Bennett's row reads type 2 diabetes, last visit 10/11, rosa.bennett@example.test.
+
+Can your team upload the CSV to your ad-matching platform and build a lookalike audience for the wellness promotion? We'd like to see first results by Friday so we can decide on budget. You're also welcome to keep the audience for the next campaign in the winter.
+
+I'm sending it as a regular attachment so you can get started right away.
+
+Thanks,
+Evan"
+"007","A hospital receptionist tells a caller from a patient's workplace the patient's diagnosis and expected absence.","Grace Nolan (front-desk receptionist, Riverside Hospital)","Victor Hale (caller identifying as the patient's workplace supervisor)","Liam Torres (hospital patient and employee)","[('patient_name', 'Liam Torres'), ('diagnosis', 'diabetes-related complication'), ('admission_status', 'currently hospitalized'), ('expected_absence', 'several days')]","telephone, caller identity unverified, no release on file, non-emergency, employer purpose","0","An employer has no entitlement to an employee's diagnosis or prognosis. At most a hospital may confirm limited directory information to a caller who asks by name if the patient has not opted out. The diagnosis and expected absence go beyond that, and nothing verified the caller or the patient's wishes.","Front Desk Call Log - Riverside Hospital
+Date: October 12, 2026
+Entered by: Grace Nolan, Reception
+
+10:25 - Incoming call to the main line from Victor Hale, who said he is the supervisor of Liam Torres. He said Liam has missed several shifts and asked whether Liam is sick and when he will be back to work.
+
+Looked up Liam Torres in the admissions system. Told Mr. Hale that Liam is currently admitted with a diabetes-related complication and that he will probably be out for several days. Mr. Hale thanked me and said that helps him plan the shift schedule.
+
+No release form on file in the system view I had open. No transfer to medical records. Caller did not ask for any additional details and ended the call at 10:28.
+
+Please note in case Mr. Hale calls back for an update."
+"008","A product engineer attaches a production chat screenshot showing a patient's name, phone number, and symptoms to a public issue tracker.","Tara Singh (product engineer, SynthHealth)","Anyone on the internet (public repository readers)","Noah Kim (patient who contacted support)","[('patient_name', 'Noah Kim'), ('phone_number', '202-555-0148'), ('symptoms', 'nausea and dizziness after medication change'), ('support_transcript', 'production conversation')]","public GitHub issue, indefinite visibility, unredacted screenshot, debugging purpose","0","Identifiable health-support conversations may be shared only with people who need them to provide care or support the service. A public issue tracker exposes the patient's name, phone number, and symptoms to everyone, and bugs can be reproduced with synthetic or redacted data.","Repository: synthhealth/chat-widget (public)
+Issue #482: Long messages overflow the widget container
+Opened by: tara-singh
+Date: October 17, 2026
+Labels: bug, ui
+
+Description:
+In production, long unbroken strings in a patient message overflow the bubble instead of wrapping. I only see it with real transcripts, so I'm attaching the screenshot from the live widget.
+
+Steps to reproduce:
+1. Open the conversation for Noah Kim (202-555-0148) in the support console.
+2. Scroll to the message that begins ""Since they changed my diabetes medication I've had nausea and dizziness, can someone at the hospital call me back...""
+3. Resize the window below 400px wide.
+
+Expected: text wraps at the container edge.
+Actual: text runs past the edge and the phone number is clipped.
+
+Screenshot: widget-overflow.png (top of widget shows name, phone, and symptom text)
+
+I'll close this once the CSS fix ships."
+"009","A radiology technologist texts a friend a patient's labeled chest X-ray and findings.","Jordan Reyes (radiology technologist, Riverside Hospital)","Megan Cho (friend, bank employee with no connection to the patient's care)","Pete Dalton (patient, local high school coach)","[('patient_name', 'Pete Dalton'), ('image', 'chest X-ray with name, DOB, and MRN overlay'), ('findings', 'right lower lobe opacity, possible lung mass'), ('age', '52'), ('history', 'smoker'), ('planned_follow_up', 'CT scan tomorrow')]","personal text message, non-treatment purpose, recipient not involved in care, identifiable image","0","Workforce members may use patient information only for their job duties. Sharing an identifiable image and findings with a friend out of curiosity serves no treatment, payment, or operations purpose, and the recipient has no need to know.","Text messages (personal phones)
+Date: October 15, 2026
+Participants: Jordan Reyes (radiology technologist, Riverside Hospital) and Megan Cho (Jordan's friend, works at a bank)
+
+[19:42] Jordan: ok you won't believe who came in today
+[19:42] Jordan: Coach Pete Dalton from Westfield High. I did his chest X-ray
+[19:43] Jordan: [photo: chest_xray_Dalton_Peter.jpg, image shows name, DOB and MRN overlay]
+[19:43] Jordan: look at that right lower lobe. definitely pneumonia, and the radiologist wrote it up as a possible lung mass too
+[19:45] Megan: oh no!! his team plays us Friday
+[19:46] Jordan: he's 52 and a smoker, they're doing a CT tomorrow. don't say anything lol
+[19:46] Megan: my lips are sealed"
+"010","A start-up sales lead emails a prospective hospital customer a deck with screenshots of real Riverside patients.","Marcus Webb (VP of Sales, SynthHealth)","Dr. Helen Park (chief information officer, Lakeside Medical Center, prospective customer)","Riverside patients visible in the dashboard screenshots (e.g., Teresa Quinn)","[('patient_name', 'Teresa Quinn'), ('age', '71'), ('diagnosis', 'congestive heart failure'), ('readmission_risk_score', '0.82'), ('MRN', 'visible in screenshot'), ('discharge_date', 'visible in screenshot')]","email attachment to external prospect, sales purpose, unredacted production screenshots","0","Riverside's patient data was shared with SynthHealth to provide services to Riverside. Showing identifiable patients, with names, MRNs, diagnoses, and risk scores, to another hospital to win business is a new purpose with no care, payment, or authorized-service role.","From: Marcus Webb, VP Sales, SynthHealth
+To: Dr. Helen Park, CIO, Lakeside Medical Center
+Date: October 20, 2026
+Subject: Riverside case study deck - readmission risk dashboard
+Attachment: SynthHealth_Riverside_CaseStudy.pdf
+
+Dr. Park,
+
+Thank you for the time on Monday. As promised, here's the case study from our Riverside deployment. I think slides 6 through 9 will be most useful to your team, because they are screenshots from Riverside's live dashboard so you can see the real output rather than a mock-up.
+
+On slide 7 you can see the high-risk queue: for example, Teresa Quinn, 71, congestive heart failure, risk score 0.82, with her MRN and discharge date shown next to her. The dashboard flagged her for a follow-up call two days before she would have been readmitted.
+
+Happy to walk your clinical leads through it on a call next week. If it's useful, I can send a few more screenshots from other units.
+
+Best,
+Marcus"
