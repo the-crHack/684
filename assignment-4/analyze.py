@@ -94,7 +94,7 @@ def analyze(config, cases, records):
                'excluded_stale_requests': len(records)-len(current),
                'smoke_valid': sum(current.get(j['run_id'], {}).get('status') == 'ok' for j in smoke_jobs(config, cases)),
                'smoke_planned': len(smoke_jobs(config, cases)),
-               'label_policy': 'Authored labels retained; see REVIEW.md for assumptions.',
+               'label_policy': 'Authored labels retained; see scenario CSV rationales and the report for assumptions.',
                'metrics': metrics, 'paired_metrics': paired_metrics}
     return summary, attacks, pairs
 

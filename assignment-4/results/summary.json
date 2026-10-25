@@ -6,7 +6,7 @@
   "excluded_stale_requests": 0,
   "smoke_valid": 7,
   "smoke_planned": 7,
-  "label_policy": "Authored labels retained; see REVIEW.md for assumptions.",
+  "label_policy": "Authored labels retained; see scenario CSV rationales and the report for assumptions.",
   "metrics": [
     {
       "model": "Qwen/Qwen3.5-4B",
