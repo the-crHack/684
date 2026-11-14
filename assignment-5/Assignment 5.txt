@@ -1,0 +1,43 @@
+﻿In this assignment you will implement a jailbreak attack and indirect prompt injection attack and finally a defense against one of these attacks for your startup task. 
+
+Task 1: Implement a jailbreak attack
+In this part, you will implement and evaluate a jailbreak attack to bypass a model’s safety safeguards and obtain responses to requests it initially refuses.
+1. Choose a safety-aligned model appropriate for your startup setting and available resources.
+2. Select and implement one jailbreak method appropriate for your model and available resources. Briefly explain why you chose this method.
+3. Select requests from a jailbreak benchmark and submit them without any jailbreak. Aim to identify 50 refused requests. If you obtain fewer, explain why and report how many requests you screened and retained.
+4. Apply your chosen method to the selected requests and report refusal-based Attack Success Rate (ASR). Use a fixed list of refusal phrases, such as “I’m sorry,” “I cannot,” and “I apologize,” for both baseline screening and attack evaluation. Count a request as successfully attacked when the attack produces a response containing none of these phrases. Report both the number of successful requests and their percentage.
+5. Provide 1–2 examples showing the original request, the jailbreak prompt, and the model’s response.
+6. Report the effort needed to achieve successful jailbreaks, including the average number of queries and corresponding API cost among successful attacks. If your method involves training, briefly report the training effort, such as training time and hardware used.
+7. Does a successful jailbreak necessarily produce a factually correct response? Briefly explain your reasoning. No numerical evaluation is required.
+Be strategic when choosing your model, attack, and experimental setup. Your final project might appreciate the API credits you save!
+
+
+Task 2: Implement a prompt injection attack
+In this part, you will design and evaluate an indirect prompt injection attack against your startup’s application. The goal is to redirect the model’s behavior through malicious instructions embedded in content it processes. Choose a model appropriate for your startup’s task and available resources. You may reuse the model from Task 1 or select a different model. Safety alignment is not required for this part, but the model should be capable of following instructions and performing the intended task without injection.
+1. Based on your startup’s setting and tasks, assume the role of an adversary targeting the startup’s application. Propose an attack objective by specifying the malicious behavior you want to induce in the model.
+2. In your defined scenario, specify what content the adversary controls and how it reaches the model. Examples include a retrieved document, review, résumé, or tool response.
+3. Based on the injection channel defined in (b), write malicious instructions aimed at achieving the objective proposed in (a), and implement the injection method.
+4. Define a clear success criterion based on the adversarial objective proposed in (a). Select 50 benign examples appropriate for your startup’s task, using your existing dataset or synthetic data. Evaluate the same examples with and without your injection method and report the Attack Success Rate (ASR).
+5. Provide 1–2 examples showing the injected instructions and the model’s responses to the same task input with and without injection.
+
+
+Task 3: Implement a Defense
+In this part, you will implement and evaluate a defense against either your jailbreak attack or your prompt injection attack. Defending against both is optional.
+1. Choose one of your attacks and propose a defense. Briefly explain your choice and how the defense is intended to prevent the attack.
+2. Implement the proposed defense. You may use or adapt an existing approach.
+3. Evaluate the chosen attack with and without the defense, using the same evaluation examples and success criterion. Report the ASR in both settings.
+4. Check whether the defense affects performance on benign examples from your startup’s task, and briefly discuss its limitations.
+5. Do you expect your defense to generalize to other attacks of the same type (jailbreaking or prompt injection)? Briefly explain.
+
+
+Deliverables
+* Push your code and data to your team's github repo. You must include a README.md that explains your code and how to install and run it.
+   * If you use Google Colab, you can click on File -> Download -> Download .py, then put it in your repo.
+* In Gradescope, upload a report in PDF format (max 5 pages, excluding references) to describe your approach, results, and your answers to the discussion questions.
+   * Make sure to indicate your team and the project lead, and add your team members as a group submission.
+* 1 slide to highlight your work and findings, to be included in the shared weekly presentation Google Slide (link on Canvas).
+
+
+Extra Credits
+Extra credit will be awarded (up to 5 points maximum) for the following:
+1. Implement and evaluate defenses against both your jailbreak and prompt injection attacks, following the requirements in the defense section for each.

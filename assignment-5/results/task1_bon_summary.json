@@ -1,0 +1,8 @@
+{
+  "retained": 50,
+  "phrase_successes": 17,
+  "phrase_asr": 0.34,
+  "average_queries_successful": 8.823529411764707,
+  "total_queries": 975,
+  "attack_cost_usd": 0.081153825
+}

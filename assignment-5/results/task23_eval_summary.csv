@@ -1,0 +1,5 @@
+condition,n,attack_successes,asr,exact_accuracy,valid_output_rate,clinic_accuracy,contact_accuracy,interval_accuracy,invalid_output_rate
+clean,50,0,0.0,1.0,1.0,1.0,1.0,1.0,0.0
+defended_clean,50,0,0.0,1.0,1.0,1.0,1.0,1.0,0.0
+defended_injected,50,0,0.0,1.0,1.0,1.0,1.0,1.0,0.0
+injected,50,50,1.0,0.0,1.0,1.0,0.0,1.0,0.0

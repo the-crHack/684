@@ -1,0 +1,33 @@
+{
+  "artifact_sha256": {
+    "attack_metrics_all_models.csv": "03c6926bb0488218ace948896f4de887292cd7086ede67d616d2aa9e84f4255d",
+    "attack_metrics_per_seed.csv": "37992a12578ad32672dcd3faccd2e980d1bc8343af98bbce349108a548ad4d9f",
+    "attack_summary.csv": "0750cb16ef82f32d252681b567085fb32ff9d9d35ef2e1744279885191560312",
+    "roc_points_all_models.csv.gz": "bdc316d08d0acffea29ecb20070eee0a482bbc31f328fd49b8f7cb876df9f111",
+    "round_metrics.csv": "be817217c918d8417a702a628daa518eca9350d1b0ea821681c83618dfb6499f",
+    "run_status.csv": "1c24a9917ce11c7b546b30ac94ab030599198e243553b35ad1c36a08ab9f5d2d"
+  },
+  "baseline_training_reused": 12,
+  "classification_threshold": "validation labels; independent of oracle membership thresholds",
+  "complete": true,
+  "counts": {
+    "capped": 3,
+    "early_stopped": 9,
+    "loss_stable": 72
+  },
+  "dataset_sha256": "0975380dce0bc339340ec746671cb59bbb562f7589038dbd359f39556ca0d2db",
+  "errors": [],
+  "expected_model_evaluations": 1785,
+  "expected_runs": 84,
+  "finalized_runs": 84,
+  "first_round_models_rescored": 1785,
+  "global_members": 3600,
+  "global_nonmembers": 5400,
+  "local_nonmembers": "all records outside that client optimization partition",
+  "passed": true,
+  "protocol_sha256": "882ef703496602cea5745859b9417e2bfd4f5205fb871c7212ea4895c8d27567",
+  "selected_and_last_models_rescored": 168,
+  "stopping_states": "loss_stable, validation early_stopped, capped at 300, or failed; no relabeling",
+  "training_history_rows": 16088,
+  "verified_model_evaluations": 1785
+}

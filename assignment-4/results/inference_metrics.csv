@@ -1,0 +1,7 @@
+pipeline,scope,planned_pairs,outputs_rescued,outputs_lost,default_planned,default_attempted,default_valid,default_missing,default_correct,default_coverage,default_strict_accuracy,default_valid_accuracy,default_output_validity_rate,default_wrong_verdicts,default_unsafe_allows,default_overblocks,default_invalid_outputs,default_length_exhaustions,default_api_errors,off_planned,off_attempted,off_valid,off_missing,off_correct,off_coverage,off_strict_accuracy,off_valid_accuracy,off_output_validity_rate,off_wrong_verdicts,off_unsafe_allows,off_overblocks,off_invalid_outputs,off_length_exhaustions,off_api_errors
+baseline,all,30,18,0,30,30,12,0,9,1.0,0.3,0.75,0.4,3,3,0,18,18,0,30,30,30,0,19,1.0,0.6333333333333333,0.6333333333333333,1.0,11,10,1,0,0,0
+baseline,base,10,4,0,10,10,6,0,5,1.0,0.5,0.8333333333333334,0.6,1,1,0,4,4,0,10,10,10,0,7,1.0,0.7,0.7,1.0,3,3,0,0,0,0
+baseline,variant,20,14,0,20,20,6,0,4,1.0,0.2,0.6666666666666666,0.3,2,2,0,14,14,0,20,20,20,0,12,1.0,0.6,0.6,1.0,8,7,1,0,0,0
+improved,all,30,27,0,30,30,3,0,2,1.0,0.06666666666666667,0.6666666666666666,0.1,1,1,0,27,27,0,30,30,30,0,23,1.0,0.7666666666666667,0.7666666666666667,1.0,7,5,2,0,0,0
+improved,base,10,9,0,10,10,1,0,1,1.0,0.1,1.0,0.1,0,0,0,9,9,0,10,10,10,0,9,1.0,0.9,0.9,1.0,1,1,0,0,0,0
+improved,variant,20,18,0,20,20,2,0,1,1.0,0.05,0.5,0.1,1,1,0,18,18,0,20,20,20,0,14,1.0,0.7,0.7,1.0,6,4,2,0,0,0

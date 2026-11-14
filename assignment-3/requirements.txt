@@ -1,0 +1,10 @@
+jax==0.11.2
+jaxlib==0.11.2
+jax-privacy==2.0.0
+keras==3.15.1
+dp-accounting==0.6.0
+numpy==2.5.3
+pandas==3.0.5
+scikit-learn==1.9.1
+scipy==1.18.1
+matplotlib==3.11.2

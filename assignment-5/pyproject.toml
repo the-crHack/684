@@ -1,0 +1,18 @@
+[project]
+name = "cs684-assignment-5"
+version = "0.1.0"
+description = "Jailbreak and prompt injection experiments using Tinker"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "tinker",
+  "transformers>=4.51",
+  "ipykernel",
+  "nbformat",
+  "pandas",
+  "matplotlib",
+  "datasets",
+  "jinja2>=3.1.6",
+]
+
+[tool.uv]
+package = false

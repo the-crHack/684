@@ -1,0 +1,30 @@
+{
+  "revision": 3,
+  "weight_decay_candidates": [0.01],
+  "max_rounds": 300,
+  "min_rounds": 80,
+  "patience": 150,
+  "min_delta": 0.0001,
+  "selection_tolerance": 0.002,
+  "monitor_key": "validation_cross_entropy",
+  "monitor": "validation cross-entropy after aggregation",
+  "checkpoint_selection": "lowest raw validation cross-entropy; earliest tie",
+  "patience_reference": "reset after cumulative validation CE reduction greater than min_delta",
+  "configuration_selection": "highest mean selected validation AUROC across all four client counts and three seeds; within 0.002 choose smallest weight decay",
+  "mechanism_goal": "prefer candidates with practical training-loss stability in all 12 runs and selected validation-minus-training cross-entropy gap at most 0.1 in every run; otherwise mark recommendation provisional",
+  "classification_threshold": "maximize validation balanced accuracy; ties choose highest threshold",
+  "partition": "reuse frozen 3600 optimization, 900 validation, 4500 test partitions",
+  "optimizer": "SGD without momentum; include partial batches",
+  "scheduler": {"factor": 0.5, "patience": 10, "threshold": 0.001, "threshold_mode": "abs", "cooldown": 5, "minimum_lr_ratio": 0.01, "eps": 1e-12},
+  "scheduler_monitor": "validation cross-entropy after aggregation",
+  "training_stability": "existing mixed loss tolerances and five persistent windows; fixed LR for all 33 rounds contributing to those windows; also record original strict criterion",
+  "stop": "first practical training-loss stability, validation-CE patience, or 300 rounds; restore best validation-CE checkpoint",
+  "scope": "Continue eight early-stopped revision-2 baselines; retain four stable runs. No new data, parameter grid, attacks, or report changes",
+  "revision_rationale": "Revision 2 limited all 12 selected validation/train CE gaps to below 0.036; four runs passed full stability and five additional runs passed the loss bounds. Validation patience 60 preempted LR settling. Seven halvings to initial_lr/100 can require 7*(10+1)+6*5=107 plateau rounds; the fixed-LR stability guard requires another 33. Patience 150 gives that sequence time to finish with a small margin. Only patience changes; all training updates, scheduler settings, loss bounds, selection rules and 300 total-round cap remain unchanged. Explicitly verified checkpoint migration preserves revision-2 histories and provenance; incompatible direct caches still reject.",
+  "interpretation": "predictive early stopping, not optimization convergence",
+  "validation_sanity": {"minimum_mean_auroc_each_client_count": 0.6, "minimum_mean_calibrated_balanced_accuracy_each_client_count": 0.55},
+  "references": [
+    "https://scikit-learn.org/1.5/modules/classification_threshold.html",
+    "https://docs.pytorch.org/docs/stable/generated/torch.optim.SGD.html"
+  ]
+}

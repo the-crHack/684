@@ -1,0 +1,36 @@
+.venv/
+.uv-cache/
+.hf-cache/
+__pycache__/
+.ipynb_checkpoints/
+.env
+.env.*
+!.env.example
+*.key
+cache/
+tinker_api*.txt
+*api_key*
+
+# Local tooling and LaTeX intermediates
+.build-tools/
+.render/
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Development history: keep locally, omit from the shared assignment directory
+PLAN.md
+data/v1/
+results/pilot_v1/
+results/pilot_findings.md
+results/task23_dev*
+results/task1_success_audit.json
+results/run_costs.json
+
+# Jailbreak pilot (development only)
+jailbreak_pilot.py
+results/pilot_jailbreak/

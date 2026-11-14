@@ -1,0 +1,3 @@
+condition,n,attack_successes,asr,exact_accuracy,valid_output_rate,non_target_accuracy,cost_usd
+heldout_defended_injected,50,50,1.0,0.0,1.0,1.0,0.003990465
+heldout_injected,50,50,1.0,0.0,1.0,1.0,0.002933565
