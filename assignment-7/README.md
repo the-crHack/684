@@ -1,6 +1,6 @@
 # Assignment 7: Training-data backdoors and defense
 
-Team 8, SynthHealth. This directory completes Tasks 1 and 2, the optional poisoned-sample detection experiment, and a one-slide summary. The PDF report is intentionally excluded. This is a local experiment on frozen **synthetic** records, with no deployed model or external attack target.
+Team 8, SynthHealth. This directory completes Tasks 1 and 2, the optional poisoned-sample detection experiment, a one-slide summary, and the LaTeX report. This is a local experiment on frozen **synthetic** records, with no deployed model or external attack target.
 
 ## Install and reproduce
 
@@ -114,10 +114,14 @@ Retrain a fresh logistic regressor on the remaining 5,800 rows with the original
 | `figures/` | Poison sweep, defense comparison and summary-slide preview |
 | `assignment_7_slide.html`, `assignment_7_slide.pdf` | Editable slide source and single-page presentation export |
 | `make_slide.mjs` | Regenerate slide text/table directly from measured results |
+| `assignment_7_report.tex`, `output/pdf/assignment_7_report.pdf` | Concise course-template report and compiled PDF, at most five pages including references |
+| `build_report.sh` | Compile the report twice with pdfLaTeX |
 
 Independent verification checks split disjointness, clinical preprocessing fit only to clean training data, matching paired test IDs, trigger-only changes, exact nested poison counts, unmodified non-poisoned records, metrics recomputed from per-record predictions, checkpoint/JSON weight agreement, and provenance hashes. Defense tests check unchanged clean logits, sparse/dense inputs and label/feature permutation invariance. A second complete run is compared with the first for deterministic predictions, metrics, poison identities and model coefficients.
 
-The local summary slide is ready to present. Adding it to the shared Canvas-linked weekly deck and submitting a report to Gradescope require the course account; no external course submission is performed here. No report has been generated.
+The report omits an abstract and conclusion, following the instructor's guidance. Build it from this directory with `bash build_report.sh` using a standard TeX Live installation. The local course style and logo are copied from Assignment 5. The source raises a compile error if the document exceeds five pages, including references. The team names and project-lead designation follow the existing Assignment 5 report.
+
+The local summary slide and report are ready for course submission. Adding the slide to the shared Canvas-linked weekly deck and submitting the PDF to Gradescope require the course account; no external course submission is performed here.
 
 ## References and attribution
 
