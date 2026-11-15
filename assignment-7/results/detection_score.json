@@ -1,0 +1,10 @@
+{
+  "false_negatives": 0,
+  "false_positives": 0,
+  "poison_count": 200,
+  "precision": 1.0,
+  "recall": 1.0,
+  "remaining_train_n": 5800,
+  "removed_count": 200,
+  "true_positives": 200
+}

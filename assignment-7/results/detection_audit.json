@@ -1,0 +1,1430 @@
+{
+  "binary_feature_count": 276,
+  "bonferroni_number_tests": 552,
+  "familywise_alpha": 0.01,
+  "flagged_features": [
+    {
+      "bonferroni_p_value": 7.916440531432944e-05,
+      "class_support": 200,
+      "enriched_label": 0,
+      "feature_index": 237,
+      "p_value": 1.4341377774335042e-07,
+      "purity": 1.0,
+      "support": 200
+    }
+  ],
+  "max_support": 600,
+  "max_support_fraction": 0.1,
+  "method": "rare_binary_feature_label_enrichment",
+  "min_purity": 0.98,
+  "min_support": 5,
+  "removed_count": 200,
+  "tested_associations": [
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 36,
+      "enriched_label": 0,
+      "feature_index": 9,
+      "p_value": 0.669472055547861,
+      "purity": 0.9230769230769231,
+      "support": 39
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 3,
+      "enriched_label": 1,
+      "feature_index": 9,
+      "p_value": 0.5640737195740219,
+      "purity": 0.07692307692307693,
+      "support": 39
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 138,
+      "enriched_label": 0,
+      "feature_index": 11,
+      "p_value": 0.005323983135962692,
+      "purity": 0.9787234042553191,
+      "support": 141
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 3,
+      "enriched_label": 1,
+      "feature_index": 11,
+      "p_value": 0.9987336656878474,
+      "purity": 0.02127659574468085,
+      "support": 141
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 85,
+      "enriched_label": 0,
+      "feature_index": 12,
+      "p_value": 0.009808404806797663,
+      "purity": 0.9883720930232558,
+      "support": 86
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 1,
+      "enriched_label": 1,
+      "feature_index": 12,
+      "p_value": 0.9987785844344439,
+      "purity": 0.011627906976744186,
+      "support": 86
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 115,
+      "enriched_label": 0,
+      "feature_index": 13,
+      "p_value": 0.30181365657858644,
+      "purity": 0.9426229508196722,
+      "support": 122
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 7,
+      "enriched_label": 1,
+      "feature_index": 13,
+      "p_value": 0.8144719860255059,
+      "purity": 0.05737704918032787,
+      "support": 122
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 6,
+      "enriched_label": 0,
+      "feature_index": 16,
+      "p_value": 0.6283058225885686,
+      "purity": 1.0,
+      "support": 6
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 0,
+      "enriched_label": 1,
+      "feature_index": 16,
+      "p_value": 1.0,
+      "purity": 0.0,
+      "support": 6
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 22,
+      "enriched_label": 0,
+      "feature_index": 17,
+      "p_value": 0.8890291273546398,
+      "purity": 0.88,
+      "support": 25
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 3,
+      "enriched_label": 1,
+      "feature_index": 17,
+      "p_value": 0.2844361240505549,
+      "purity": 0.12,
+      "support": 25
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 69,
+      "enriched_label": 0,
+      "feature_index": 18,
+      "p_value": 0.9373804712781849,
+      "purity": 0.8846153846153846,
+      "support": 78
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 9,
+      "enriched_label": 1,
+      "feature_index": 18,
+      "p_value": 0.12416394395317892,
+      "purity": 0.11538461538461539,
+      "support": 78
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 239,
+      "enriched_label": 0,
+      "feature_index": 19,
+      "p_value": 0.09354662927878143,
+      "purity": 0.9484126984126984,
+      "support": 252
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 13,
+      "enriched_label": 1,
+      "feature_index": 19,
+      "p_value": 0.9442688974005933,
+      "purity": 0.051587301587301584,
+      "support": 252
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 540,
+      "enriched_label": 0,
+      "feature_index": 20,
+      "p_value": 0.012318400761683964,
+      "purity": 0.9490333919156415,
+      "support": 569
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 29,
+      "enriched_label": 1,
+      "feature_index": 20,
+      "p_value": 0.9925180503409459,
+      "purity": 0.050966608084358524,
+      "support": 569
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 121,
+      "enriched_label": 0,
+      "feature_index": 25,
+      "p_value": 0.8101229402616975,
+      "purity": 0.9097744360902256,
+      "support": 133
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 12,
+      "enriched_label": 1,
+      "feature_index": 25,
+      "p_value": 0.28643055452106564,
+      "purity": 0.09022556390977443,
+      "support": 133
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 209,
+      "enriched_label": 0,
+      "feature_index": 29,
+      "p_value": 0.5808513959490111,
+      "purity": 0.9247787610619469,
+      "support": 226
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 17,
+      "enriched_label": 1,
+      "feature_index": 29,
+      "p_value": 0.5211370685094577,
+      "purity": 0.0752212389380531,
+      "support": 226
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 226,
+      "enriched_label": 0,
+      "feature_index": 30,
+      "p_value": 0.13775600004090924,
+      "purity": 0.9456066945606695,
+      "support": 239
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 13,
+      "enriched_label": 1,
+      "feature_index": 30,
+      "p_value": 0.9139740495585813,
+      "purity": 0.05439330543933055,
+      "support": 239
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 13,
+      "enriched_label": 0,
+      "feature_index": 31,
+      "p_value": 0.3651223097451355,
+      "purity": 1.0,
+      "support": 13
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 0,
+      "enriched_label": 1,
+      "feature_index": 31,
+      "p_value": 1.0,
+      "purity": 0.0,
+      "support": 13
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 8,
+      "enriched_label": 0,
+      "feature_index": 34,
+      "p_value": 0.8592063166139279,
+      "purity": 0.8888888888888888,
+      "support": 9
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 1,
+      "enriched_label": 1,
+      "feature_index": 34,
+      "p_value": 0.5020590483252267,
+      "purity": 0.1111111111111111,
+      "support": 9
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 203,
+      "enriched_label": 0,
+      "feature_index": 35,
+      "p_value": 0.25295332864560965,
+      "purity": 0.9398148148148148,
+      "support": 216
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 13,
+      "enriched_label": 1,
+      "feature_index": 35,
+      "p_value": 0.8278552061486377,
+      "purity": 0.06018518518518518,
+      "support": 216
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 121,
+      "enriched_label": 0,
+      "feature_index": 36,
+      "p_value": 0.8101229402616975,
+      "purity": 0.9097744360902256,
+      "support": 133
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 12,
+      "enriched_label": 1,
+      "feature_index": 36,
+      "p_value": 0.28643055452106564,
+      "purity": 0.09022556390977443,
+      "support": 133
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 95,
+      "enriched_label": 0,
+      "feature_index": 37,
+      "p_value": 0.9999873245046779,
+      "purity": 0.811965811965812,
+      "support": 117
+    },
+    {
+      "bonferroni_p_value": 0.022277099697560726,
+      "class_support": 22,
+      "enriched_label": 1,
+      "feature_index": 37,
+      "p_value": 4.035706466949407e-05,
+      "purity": 0.18803418803418803,
+      "support": 117
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 18,
+      "enriched_label": 0,
+      "feature_index": 38,
+      "p_value": 0.5808067991481508,
+      "purity": 0.9473684210526315,
+      "support": 19
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 1,
+      "enriched_label": 1,
+      "feature_index": 38,
+      "p_value": 0.7708322188989868,
+      "purity": 0.05263157894736842,
+      "support": 19
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 35,
+      "enriched_label": 0,
+      "feature_index": 40,
+      "p_value": 0.6868185284874626,
+      "purity": 0.9210526315789473,
+      "support": 38
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 3,
+      "enriched_label": 1,
+      "feature_index": 40,
+      "p_value": 0.5461086599492619,
+      "purity": 0.07894736842105263,
+      "support": 38
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 8,
+      "enriched_label": 0,
+      "feature_index": 41,
+      "p_value": 0.9934238918710218,
+      "purity": 0.7272727272727273,
+      "support": 11
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 3,
+      "enriched_label": 1,
+      "feature_index": 41,
+      "p_value": 0.043206071938270994,
+      "purity": 0.2727272727272727,
+      "support": 11
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 39,
+      "enriched_label": 0,
+      "feature_index": 43,
+      "p_value": 0.04834412490672723,
+      "purity": 1.0,
+      "support": 39
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 0,
+      "enriched_label": 1,
+      "feature_index": 43,
+      "p_value": 1.0,
+      "purity": 0.0,
+      "support": 39
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 52,
+      "enriched_label": 0,
+      "feature_index": 44,
+      "p_value": 0.9678798230071479,
+      "purity": 0.8666666666666667,
+      "support": 60
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 8,
+      "enriched_label": 1,
+      "feature_index": 44,
+      "p_value": 0.07517163213759168,
+      "purity": 0.13333333333333333,
+      "support": 60
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 26,
+      "enriched_label": 0,
+      "feature_index": 46,
+      "p_value": 0.3917748026652518,
+      "purity": 0.9629629629629629,
+      "support": 27
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 1,
+      "enriched_label": 1,
+      "feature_index": 46,
+      "p_value": 0.8769413881375968,
+      "purity": 0.037037037037037035,
+      "support": 27
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 287,
+      "enriched_label": 0,
+      "feature_index": 50,
+      "p_value": 0.23462111421892248,
+      "purity": 0.9379084967320261,
+      "support": 306
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 19,
+      "enriched_label": 1,
+      "feature_index": 50,
+      "p_value": 0.831221836563763,
+      "purity": 0.06209150326797386,
+      "support": 306
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 56,
+      "enriched_label": 0,
+      "feature_index": 51,
+      "p_value": 0.18234898011316927,
+      "purity": 0.9655172413793104,
+      "support": 58
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 2,
+      "enriched_label": 1,
+      "feature_index": 51,
+      "p_value": 0.937291873211719,
+      "purity": 0.034482758620689655,
+      "support": 58
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 9,
+      "enriched_label": 0,
+      "feature_index": 52,
+      "p_value": 0.49794095167477326,
+      "purity": 1.0,
+      "support": 9
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 0,
+      "enriched_label": 1,
+      "feature_index": 52,
+      "p_value": 1.0,
+      "purity": 0.0,
+      "support": 9
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 158,
+      "enriched_label": 0,
+      "feature_index": 54,
+      "p_value": 0.03353261061858599,
+      "purity": 0.9634146341463414,
+      "support": 164
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 6,
+      "enriched_label": 1,
+      "feature_index": 54,
+      "p_value": 0.9861634433292403,
+      "purity": 0.036585365853658534,
+      "support": 164
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 32,
+      "enriched_label": 0,
+      "feature_index": 55,
+      "p_value": 0.8738985296342808,
+      "purity": 0.8888888888888888,
+      "support": 36
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 4,
+      "enriched_label": 1,
+      "feature_index": 55,
+      "p_value": 0.27878914080442785,
+      "purity": 0.1111111111111111,
+      "support": 36
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 139,
+      "enriched_label": 0,
+      "feature_index": 56,
+      "p_value": 0.326455112511743,
+      "purity": 0.9391891891891891,
+      "support": 148
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 9,
+      "enriched_label": 1,
+      "feature_index": 56,
+      "p_value": 0.783924933486911,
+      "purity": 0.060810810810810814,
+      "support": 148
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 5,
+      "enriched_label": 0,
+      "feature_index": 58,
+      "p_value": 0.6789281554467319,
+      "purity": 1.0,
+      "support": 5
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 0,
+      "enriched_label": 1,
+      "feature_index": 58,
+      "p_value": 1.0,
+      "purity": 0.0,
+      "support": 5
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 458,
+      "enriched_label": 0,
+      "feature_index": 62,
+      "p_value": 0.9565038735351827,
+      "purity": 0.906930693069307,
+      "support": 505
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 47,
+      "enriched_label": 1,
+      "feature_index": 62,
+      "p_value": 0.06116291030465597,
+      "purity": 0.09306930693069307,
+      "support": 505
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 537,
+      "enriched_label": 0,
+      "feature_index": 63,
+      "p_value": 0.23721487921150675,
+      "purity": 0.9339130434782609,
+      "support": 575
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 38,
+      "enriched_label": 1,
+      "feature_index": 63,
+      "p_value": 0.8126720345007719,
+      "purity": 0.06608695652173913,
+      "support": 575
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 256,
+      "enriched_label": 0,
+      "feature_index": 64,
+      "p_value": 0.419560038827391,
+      "purity": 0.9309090909090909,
+      "support": 275
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 19,
+      "enriched_label": 1,
+      "feature_index": 64,
+      "p_value": 0.6711203404863175,
+      "purity": 0.06909090909090909,
+      "support": 275
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 386,
+      "enriched_label": 0,
+      "feature_index": 65,
+      "p_value": 0.023620427859943508,
+      "purity": 0.9507389162561576,
+      "support": 406
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 20,
+      "enriched_label": 1,
+      "feature_index": 65,
+      "p_value": 0.9862409416004454,
+      "purity": 0.04926108374384237,
+      "support": 406
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 261,
+      "enriched_label": 0,
+      "feature_index": 66,
+      "p_value": 0.045526078017929024,
+      "purity": 0.9525547445255474,
+      "support": 274
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 13,
+      "enriched_label": 1,
+      "feature_index": 66,
+      "p_value": 0.9748840245995076,
+      "purity": 0.04744525547445255,
+      "support": 274
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 174,
+      "enriched_label": 0,
+      "feature_index": 67,
+      "p_value": 0.466360300242636,
+      "purity": 0.93048128342246,
+      "support": 187
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 13,
+      "enriched_label": 1,
+      "feature_index": 67,
+      "p_value": 0.6452843176338678,
+      "purity": 0.06951871657754011,
+      "support": 187
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 84,
+      "enriched_label": 0,
+      "feature_index": 70,
+      "p_value": 0.9515193811740549,
+      "purity": 0.8842105263157894,
+      "support": 95
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 11,
+      "enriched_label": 1,
+      "feature_index": 70,
+      "p_value": 0.09407617159571816,
+      "purity": 0.11578947368421053,
+      "support": 95
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 212,
+      "enriched_label": 0,
+      "feature_index": 73,
+      "p_value": 0.1367797269976934,
+      "purity": 0.9464285714285714,
+      "support": 224
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 12,
+      "enriched_label": 1,
+      "feature_index": 73,
+      "p_value": 0.916218436011334,
+      "purity": 0.05357142857142857,
+      "support": 224
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 451,
+      "enriched_label": 0,
+      "feature_index": 74,
+      "p_value": 0.9647319605319135,
+      "purity": 0.9056224899598394,
+      "support": 498
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 47,
+      "enriched_label": 1,
+      "feature_index": 74,
+      "p_value": 0.0503305372711374,
+      "purity": 0.09437751004016064,
+      "support": 498
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 123,
+      "enriched_label": 0,
+      "feature_index": 75,
+      "p_value": 0.14373998209018515,
+      "purity": 0.9534883720930233,
+      "support": 129
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 6,
+      "enriched_label": 1,
+      "feature_index": 75,
+      "p_value": 0.9267802025389795,
+      "purity": 0.046511627906976744,
+      "support": 129
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 18,
+      "enriched_label": 0,
+      "feature_index": 76,
+      "p_value": 0.24767509784033612,
+      "purity": 1.0,
+      "support": 18
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 0,
+      "enriched_label": 1,
+      "feature_index": 76,
+      "p_value": 1.0,
+      "purity": 0.0,
+      "support": 18
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 85,
+      "enriched_label": 0,
+      "feature_index": 77,
+      "p_value": 0.09739728470306276,
+      "purity": 0.9659090909090909,
+      "support": 88
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 3,
+      "enriched_label": 1,
+      "feature_index": 77,
+      "p_value": 0.9647893798580236,
+      "purity": 0.03409090909090909,
+      "support": 88
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 122,
+      "enriched_label": 0,
+      "feature_index": 78,
+      "p_value": 0.8712955242536274,
+      "purity": 0.9037037037037037,
+      "support": 135
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 13,
+      "enriched_label": 1,
+      "feature_index": 78,
+      "p_value": 0.20431708988017153,
+      "purity": 0.0962962962962963,
+      "support": 135
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 166,
+      "enriched_label": 0,
+      "feature_index": 81,
+      "p_value": 0.02319987301692494,
+      "purity": 0.9651162790697675,
+      "support": 172
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 6,
+      "enriched_label": 1,
+      "feature_index": 81,
+      "p_value": 0.9908351963126509,
+      "purity": 0.03488372093023256,
+      "support": 172
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 189,
+      "enriched_label": 0,
+      "feature_index": 84,
+      "p_value": 0.6420184081260252,
+      "purity": 0.9219512195121952,
+      "support": 205
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 16,
+      "enriched_label": 1,
+      "feature_index": 84,
+      "p_value": 0.4612100658737972,
+      "purity": 0.07804878048780488,
+      "support": 205
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 356,
+      "enriched_label": 0,
+      "feature_index": 85,
+      "p_value": 0.9924119267564521,
+      "purity": 0.8944723618090452,
+      "support": 398
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 42,
+      "enriched_label": 1,
+      "feature_index": 85,
+      "p_value": 0.01224793402767258,
+      "purity": 0.10552763819095477,
+      "support": 398
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 86,
+      "enriched_label": 0,
+      "feature_index": 86,
+      "p_value": 0.8320785501951885,
+      "purity": 0.9052631578947369,
+      "support": 95
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 9,
+      "enriched_label": 1,
+      "feature_index": 86,
+      "p_value": 0.2751174732855706,
+      "purity": 0.09473684210526316,
+      "support": 95
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 60,
+      "enriched_label": 0,
+      "feature_index": 87,
+      "p_value": 0.2989767342720964,
+      "purity": 0.9523809523809523,
+      "support": 63
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 3,
+      "enriched_label": 1,
+      "feature_index": 87,
+      "p_value": 0.8587749963592284,
+      "purity": 0.047619047619047616,
+      "support": 63
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 85,
+      "enriched_label": 0,
+      "feature_index": 88,
+      "p_value": 0.009808404806797663,
+      "purity": 0.9883720930232558,
+      "support": 86
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 1,
+      "enriched_label": 1,
+      "feature_index": 88,
+      "p_value": 0.9987785844344439,
+      "purity": 0.011627906976744186,
+      "support": 86
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 68,
+      "enriched_label": 0,
+      "feature_index": 89,
+      "p_value": 0.6876709607965295,
+      "purity": 0.918918918918919,
+      "support": 74
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 6,
+      "enriched_label": 1,
+      "feature_index": 89,
+      "p_value": 0.477176574958223,
+      "purity": 0.08108108108108109,
+      "support": 74
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 404,
+      "enriched_label": 0,
+      "feature_index": 91,
+      "p_value": 0.6454783008349898,
+      "purity": 0.9223744292237442,
+      "support": 438
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 34,
+      "enriched_label": 1,
+      "feature_index": 91,
+      "p_value": 0.4260357769274672,
+      "purity": 0.0776255707762557,
+      "support": 438
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 310,
+      "enriched_label": 0,
+      "feature_index": 92,
+      "p_value": 0.4780500165120706,
+      "purity": 0.9281437125748503,
+      "support": 334
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 24,
+      "enriched_label": 1,
+      "feature_index": 92,
+      "p_value": 0.606991248890052,
+      "purity": 0.0718562874251497,
+      "support": 334
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 52,
+      "enriched_label": 0,
+      "feature_index": 93,
+      "p_value": 0.40560474006439234,
+      "purity": 0.9454545454545454,
+      "support": 55
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 3,
+      "enriched_label": 1,
+      "feature_index": 93,
+      "p_value": 0.7883906135238625,
+      "purity": 0.05454545454545454,
+      "support": 55
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 29,
+      "enriched_label": 0,
+      "feature_index": 94,
+      "p_value": 0.962697023502141,
+      "purity": 0.8529411764705882,
+      "support": 34
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 5,
+      "enriched_label": 1,
+      "feature_index": 94,
+      "p_value": 0.10479751844552394,
+      "purity": 0.14705882352941177,
+      "support": 34
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 110,
+      "enriched_label": 0,
+      "feature_index": 95,
+      "p_value": 0.7194624324815491,
+      "purity": 0.9166666666666666,
+      "support": 120
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 10,
+      "enriched_label": 1,
+      "feature_index": 95,
+      "p_value": 0.4041178187256401,
+      "purity": 0.08333333333333333,
+      "support": 120
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 231,
+      "enriched_label": 0,
+      "feature_index": 97,
+      "p_value": 0.0022603793880187103,
+      "purity": 0.9705882352941176,
+      "support": 238
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 7,
+      "enriched_label": 1,
+      "feature_index": 97,
+      "p_value": 0.9992337269872446,
+      "purity": 0.029411764705882353,
+      "support": 238
+    },
+    {
+      "bonferroni_p_value": 0.19459156139529157,
+      "class_support": 446,
+      "enriched_label": 0,
+      "feature_index": 98,
+      "p_value": 0.00035252094455668763,
+      "purity": 0.9632829373650108,
+      "support": 463
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 17,
+      "enriched_label": 1,
+      "feature_index": 98,
+      "p_value": 0.9998481812386514,
+      "purity": 0.0367170626349892,
+      "support": 463
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 312,
+      "enriched_label": 0,
+      "feature_index": 99,
+      "p_value": 0.4653718573132631,
+      "purity": 0.9285714285714286,
+      "support": 336
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 24,
+      "enriched_label": 1,
+      "feature_index": 99,
+      "p_value": 0.6190975029697936,
+      "purity": 0.07142857142857142,
+      "support": 336
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 35,
+      "enriched_label": 0,
+      "feature_index": 101,
+      "p_value": 0.06602282647342828,
+      "purity": 1.0,
+      "support": 35
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 0,
+      "enriched_label": 1,
+      "feature_index": 101,
+      "p_value": 1.0,
+      "purity": 0.0,
+      "support": 35
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 42,
+      "enriched_label": 0,
+      "feature_index": 104,
+      "p_value": 0.15882820890985969,
+      "purity": 0.9767441860465116,
+      "support": 43
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 1,
+      "enriched_label": 1,
+      "feature_index": 104,
+      "p_value": 0.964608512886049,
+      "purity": 0.023255813953488372,
+      "support": 43
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 66,
+      "enriched_label": 0,
+      "feature_index": 107,
+      "p_value": 0.005864763461122982,
+      "purity": 1.0,
+      "support": 66
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 0,
+      "enriched_label": 1,
+      "feature_index": 107,
+      "p_value": 1.0,
+      "purity": 0.0,
+      "support": 66
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 45,
+      "enriched_label": 0,
+      "feature_index": 111,
+      "p_value": 0.13255623460984667,
+      "purity": 0.9782608695652174,
+      "support": 46
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 1,
+      "enriched_label": 1,
+      "feature_index": 111,
+      "p_value": 0.9719938726416941,
+      "purity": 0.021739130434782608,
+      "support": 46
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 15,
+      "enriched_label": 0,
+      "feature_index": 114,
+      "p_value": 0.3126320722456795,
+      "purity": 1.0,
+      "support": 15
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 0,
+      "enriched_label": 1,
+      "feature_index": 114,
+      "p_value": 1.0,
+      "purity": 0.0,
+      "support": 15
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 305,
+      "enriched_label": 0,
+      "feature_index": 116,
+      "p_value": 0.008683422194046013,
+      "purity": 0.9591194968553459,
+      "support": 318
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 13,
+      "enriched_label": 1,
+      "feature_index": 116,
+      "p_value": 0.9958470662625794,
+      "purity": 0.040880503144654086,
+      "support": 318
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 17,
+      "enriched_label": 0,
+      "feature_index": 117,
+      "p_value": 0.2676734303429789,
+      "purity": 1.0,
+      "support": 17
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 0,
+      "enriched_label": 1,
+      "feature_index": 117,
+      "p_value": 1.0,
+      "purity": 0.0,
+      "support": 17
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 23,
+      "enriched_label": 0,
+      "feature_index": 118,
+      "p_value": 0.1679499056287561,
+      "purity": 1.0,
+      "support": 23
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 0,
+      "enriched_label": 1,
+      "feature_index": 118,
+      "p_value": 1.0,
+      "purity": 0.0,
+      "support": 23
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 42,
+      "enriched_label": 0,
+      "feature_index": 121,
+      "p_value": 0.5655745144818386,
+      "purity": 0.9333333333333333,
+      "support": 45
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 3,
+      "enriched_label": 1,
+      "feature_index": 121,
+      "p_value": 0.6622869580867716,
+      "purity": 0.06666666666666667,
+      "support": 45
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 27,
+      "enriched_label": 0,
+      "feature_index": 122,
+      "p_value": 0.37170994060295953,
+      "purity": 0.9642857142857143,
+      "support": 28
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 1,
+      "enriched_label": 1,
+      "feature_index": 122,
+      "p_value": 0.8861506966094692,
+      "purity": 0.03571428571428571,
+      "support": 28
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 546,
+      "enriched_label": 0,
+      "feature_index": 124,
+      "p_value": 0.035462936832364386,
+      "purity": 0.9446366782006921,
+      "support": 578
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 32,
+      "enriched_label": 1,
+      "feature_index": 124,
+      "p_value": 0.9765191068428318,
+      "purity": 0.05536332179930796,
+      "support": 578
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 40,
+      "enriched_label": 0,
+      "feature_index": 125,
+      "p_value": 0.3847148226709991,
+      "purity": 0.9523809523809523,
+      "support": 42
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 2,
+      "enriched_label": 1,
+      "feature_index": 125,
+      "p_value": 0.8314162611989897,
+      "purity": 0.047619047619047616,
+      "support": 42
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 4,
+      "enriched_label": 0,
+      "feature_index": 128,
+      "p_value": 0.9523836298427393,
+      "purity": 0.8,
+      "support": 5
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 1,
+      "enriched_label": 1,
+      "feature_index": 128,
+      "p_value": 0.3210718445532681,
+      "purity": 0.2,
+      "support": 5
+    },
+    {
+      "bonferroni_p_value": 0.253878817212535,
+      "class_support": 406,
+      "enriched_label": 0,
+      "feature_index": 130,
+      "p_value": 0.00045992539350096925,
+      "purity": 0.9643705463182898,
+      "support": 421
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 15,
+      "enriched_label": 1,
+      "feature_index": 130,
+      "p_value": 0.9998080149365726,
+      "purity": 0.035629453681710214,
+      "support": 421
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 6,
+      "enriched_label": 0,
+      "feature_index": 131,
+      "p_value": 0.6283058225885686,
+      "purity": 1.0,
+      "support": 6
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 0,
+      "enriched_label": 1,
+      "feature_index": 131,
+      "p_value": 1.0,
+      "purity": 0.0,
+      "support": 6
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 318,
+      "enriched_label": 0,
+      "feature_index": 133,
+      "p_value": 0.00506927614603053,
+      "purity": 0.9607250755287009,
+      "support": 331
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 13,
+      "enriched_label": 1,
+      "feature_index": 133,
+      "p_value": 0.9976695269644483,
+      "purity": 0.03927492447129909,
+      "support": 331
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 11,
+      "enriched_label": 0,
+      "feature_index": 134,
+      "p_value": 0.4264025598168776,
+      "purity": 1.0,
+      "support": 11
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 0,
+      "enriched_label": 1,
+      "feature_index": 134,
+      "p_value": 1.0,
+      "purity": 0.0,
+      "support": 11
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 16,
+      "enriched_label": 0,
+      "feature_index": 136,
+      "p_value": 0.2892826092057767,
+      "purity": 1.0,
+      "support": 16
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 0,
+      "enriched_label": 1,
+      "feature_index": 136,
+      "p_value": 1.0,
+      "purity": 0.0,
+      "support": 16
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 37,
+      "enriched_label": 0,
+      "feature_index": 146,
+      "p_value": 0.05649769243857221,
+      "purity": 1.0,
+      "support": 37
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 0,
+      "enriched_label": 1,
+      "feature_index": 146,
+      "p_value": 1.0,
+      "purity": 0.0,
+      "support": 37
+    },
+    {
+      "bonferroni_p_value": 7.916440531432944e-05,
+      "class_support": 200,
+      "enriched_label": 0,
+      "feature_index": 237,
+      "p_value": 1.4341377774335042e-07,
+      "purity": 1.0,
+      "support": 200
+    },
+    {
+      "bonferroni_p_value": 1.0,
+      "class_support": 0,
+      "enriched_label": 1,
+      "feature_index": 237,
+      "p_value": 1.0,
+      "purity": 0.0,
+      "support": 200
+    }
+  ],
+  "total_features": 284,
+  "training_examples": 6000
+}

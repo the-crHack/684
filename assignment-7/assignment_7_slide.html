@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assignment 7 summary slide | Team 8</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #dce3e6; }
+  body { font-family: Arial, Helvetica, sans-serif; color: #142e3b; }
+  .slide { width: 1280px; height: 720px; margin: 20px auto; padding: 43px 56px 34px; background: #fafbf8; overflow: hidden; }
+  .eyebrow { margin: 0 0 10px; color: #476578; font-size: 18px; font-weight: 700; letter-spacing: 1.4px; }
+  h1 { margin: 0; font-size: 42px; letter-spacing: -1.3px; line-height: 1.14; font-weight: 700; }
+  .subtitle { margin: 13px 0 30px; font-size: 23px; color: #476578; line-height: 1.25; }
+  .evidence { display: grid; grid-template-columns: 355px 1fr; gap: 48px; align-items: start; }
+  .method { font-size: 22px; line-height: 1.38; }
+  .method p { margin: 0 0 20px; }
+  .method strong { color: #142e3b; }
+  code { font-family: Arial, Helvetica, sans-serif; font-weight: 700; color: #a43246; }
+  table { border-collapse: collapse; width: 100%; font-size: 22px; line-height: 1.2; table-layout: fixed; }
+  thead th { font-size: 18px; color: #476578; text-align: right; font-weight: 700; border-bottom: 2px solid #bdcdd0; padding: 0 8px 17px; }
+  thead th:first-child { text-align: left; width: 38%; padding-left: 0; }
+  tbody th { text-align: left; font-weight: 400; padding: 21px 8px 21px 0; }
+  td { text-align: right; padding: 21px 8px; font-size: 27px; font-weight: 700; }
+  tbody tr { border-bottom: 1px solid #d4dedf; }
+  tbody tr:nth-child(2) td:nth-child(n+3) { color: #a43246; }
+  tbody tr:nth-child(3) td, tbody tr:nth-child(4) td { color: #18655e; }
+  .finding { margin: 28px 0 10px; font-size: 25px; font-weight: 700; color: #18655e; line-height: 1.25; }
+  .footer { margin: 0; font-size: 17px; color: #476578; line-height: 1.35; }
+  @page { size: 13.333333in 7.5in; margin: 0; }
+  @media print { html, body { width: 1280px; height: 720px; background: #fafbf8; } .slide { margin: 0; } }
+</style></head>
+<body><main class="slide" contenteditable="true" aria-label="One-slide editable presentation">
+  <p class="eyebrow">TEAM 8 · CS684 ASSIGNMENT 7</p>
+  <h1>SynthHealth: a backdoor in readmission prediction</h1>
+  <p class="subtitle">A poisoned routing tag makes a classifier predict “no early readmission”</p>
+  <section class="evidence">
+    <div class="method">
+      <p><strong>Attack.</strong> Add <code>audit684</code> and relabel 200 of 6,000 training records (3.33%). Logistic regression. Sweep: 0, 1, 5, 10, 25, 50, 100, 200, 400.</p>
+      <p><strong>Defense.</strong> Zero weights for features absent from 1,500 trusted clean records. No trigger or target access.</p>
+      <p><strong>Extra credit.</strong> Detect rare features with near-pure labels, remove flagged rows, retrain.</p>
+    </div>
+    <table aria-label="Performance on the same held-out clean and triggered records">
+      <thead><tr><th>Model</th><th>Clean<br>accuracy</th><th>ASR<br>all 100</th><th>ASR<br>non-target 50</th></tr></thead>
+      <tbody><tr><th scope="row">Original clean</th><td>60%</td><td>47%</td><td>36%</td></tr>
+<tr><th scope="row">Poisoned (200)</th><td>57%</td><td>100%</td><td>100%</td></tr>
+<tr><th scope="row">Weight defense</th><td>57%</td><td>86%</td><td>84%</td></tr>
+<tr><th scope="row">Filtered retraining</th><td>58%</td><td>68%</td><td>62%</td></tr></tbody>
+    </table>
+  </section>
+  <p class="finding">Non-target ASR: 100% before defense, 84% after defense</p>
+  <p class="footer">Detection precision 100%, recall 100% (200/200 poisons found). Same 100 paired tests, balanced by class.<br>Synthetic records only. Results test one dormant-feature trigger, not a general backdoor guarantee.</p>
+</main>
+<!-- Source: results/summary.json, results/metrics.csv, config.json. HTML text and table are editable.
+ASR is the fraction predicted target label 0 (no readmission within 30 days, including later readmission);
+non-target ASR excludes true-label-0 records.
+This is a one-slide weekly presentation, not the excluded assignment report. -->
+</body></html>

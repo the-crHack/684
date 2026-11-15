@@ -6,3 +6,4 @@ For each assignment, make sure to include a README.md that explains how to insta
 - [Assignment 3: Differential privacy and audit](assignment-3/README.md)
 - [Assignment 4: Contextual integrity](assignment-4/README.md)
 - [Assignment 5: Jailbreaks and prompt injection](assignment-5/README.md)
+- [Assignment 7: Training-data backdoors and defense](assignment-7/README.md)
