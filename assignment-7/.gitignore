@@ -2,3 +2,7 @@
 __pycache__/
 *.pyc
 .build/
+assignment_7_slide.html
+assignment_7_slide.pdf
+figures/assignment_7_slide.png
+make_slide.mjs

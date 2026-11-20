@@ -1,6 +1,6 @@
 # Assignment 7: Training-data backdoors and defense
 
-Team 8, SynthHealth. This directory completes Tasks 1 and 2, the optional poisoned-sample detection experiment, a one-slide summary, and the LaTeX report. This is a local experiment on frozen **synthetic** records, with no deployed model or external attack target.
+Team 8, SynthHealth. This directory completes Tasks 1 and 2, the optional poisoned-sample detection experiment, and the LaTeX report. This is a local experiment on frozen **synthetic** records, with no deployed model or external attack target.
 
 ## Install and reproduce
 
@@ -23,7 +23,6 @@ python -m unittest discover -s tests -v
 python verify_results.py
 python reproduce.py                    # full independent rerun and exact artifact comparison
 python predict.py --model defended --input results/test_clean.csv --output .build/predictions.csv
-node make_slide.mjs --pdf --preview    # Node.js and local Chrome required only for slide export
 ```
 
 The committed results can be inspected without training. To run in a separate directory, use `python experiment.py --output-dir .build/reproduction` and `python verify_results.py --results .build/reproduction`. Predictions and metrics should match the committed run on the pinned environment. Checkpoints use joblib and should only be loaded from a trusted source. Portable JSON coefficients are also included.
@@ -111,9 +110,7 @@ Retrain a fresh logistic regressor on the remaining 5,800 rows with the original
 | `data/` | Frozen synthetic source, clinical schema and provenance/attribution |
 | `results/` | Clean split snapshots, triggered pairs, selected poisoned data, poison IDs, metrics and audits |
 | `results/models/` | Original, all poisoned, defended and filtered checkpoints, plus portable weight JSON |
-| `figures/` | Poison sweep, defense comparison and summary-slide preview |
-| `assignment_7_slide.html`, `assignment_7_slide.pdf` | Editable slide source and single-page presentation export |
-| `make_slide.mjs` | Regenerate slide text/table directly from measured results |
+| `figures/` | Poison sweep and defense comparison |
 | `assignment_7_report.tex`, `output/pdf/assignment_7_report.pdf` | Concise course-template report and compiled PDF, at most five pages including references |
 | `build_report.sh` | Compile the report twice with pdfLaTeX |
 | `report_analysis.py`, `report_analysis.json` | Recompute paired prediction changes, trigger coefficients, and validation baselines used in the expanded report |
@@ -122,7 +119,7 @@ Independent verification checks split disjointness, clinical preprocessing fit o
 
 The report omits an abstract and conclusion, following the instructor's guidance. Its expanded five-page version explains paired trigger-induced errors, the direct coefficient effect and residual errors after pruning, and class imbalance on validation. Build it from this directory with `bash build_report.sh` using a standard TeX Live installation. The build first recomputes report-only analysis from saved experimental outputs, then compiles twice. It does not retrain or change the experiment. The local course style and logo are copied from Assignment 5. The source raises a compile error if the document exceeds five pages, including references. Project lead: Naveen Jarpla. Team members: Bharat Govil, Vishnu Fnu, and Chetan Madadi.
 
-The local summary slide and report are ready for course submission. Adding the slide to the shared Canvas-linked weekly deck and submitting the PDF to Gradescope require the course account; no external course submission is performed here.
+Submitting the PDF to Gradescope requires the course account; no external course submission is performed here. Presentation files are maintained separately from this repository.
 
 ## References and attribution
 

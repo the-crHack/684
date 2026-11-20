@@ -227,7 +227,7 @@ Filtered retrain & 75.4\% & 60.9\% & 42.1\%\\
 
 The modest 60\% baseline accuracy, synthetic-data setting, single split, and 100-row balanced test limit the strength of these findings. Generated encounters share a generator trained before our classifier split; we do not claim independent real-patient or cross-hospital validation. Deterministic reruns check implementation consistency, not robustness across new data or random splits. Approximate intervals on these small diagnostic samples should not be read as clinical guarantees.
 
-Code, data, checkpoints, predictions, and the summary slide are in \href{https://github.com/the-crHack/684/tree/main/assignment-7}{\texttt{the-crHack/684/assignment-7}}; installation and run commands are in its README. Nine tests pass. An independent audit reconstructs 1,100 predictions across 11 models and checks split isolation, preprocessing, poisoning, and metrics. A full rerun matches 40 saved CSV/JSON artifacts exactly. These checks establish reproducibility, not general defense effectiveness.
+Code, data, checkpoints, and predictions are in \href{https://github.com/the-crHack/684/tree/main/assignment-7}{\texttt{the-crHack/684/assignment-7}}; installation and run commands are in its README. Nine tests pass. An independent audit reconstructs 1,100 predictions across 11 models and checks split isolation, preprocessing, poisoning, and metrics. A full rerun matches 40 saved CSV/JSON artifacts exactly. These checks establish reproducibility, not general defense effectiveness.
 
 \begin{thebibliography}{9}
 \bibitem{strack}
