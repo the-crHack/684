@@ -1,0 +1,89 @@
+{
+  "source": "Saved experiments, no additional fitting or parameter selection",
+  "paired_non_target_transitions": [
+    {
+      "model": "clean",
+      "non_target_n": 50,
+      "clean_errors": 18,
+      "triggered_errors": 18,
+      "correct_to_wrong": 1,
+      "wrong_to_correct": 1,
+      "trigger_coefficient": 0.0
+    },
+    {
+      "model": "poison_200",
+      "non_target_n": 50,
+      "clean_errors": 31,
+      "triggered_errors": 50,
+      "correct_to_wrong": 19,
+      "wrong_to_correct": 0,
+      "trigger_coefficient": -3.3549311035018525
+    },
+    {
+      "model": "defended",
+      "non_target_n": 50,
+      "clean_errors": 31,
+      "triggered_errors": 42,
+      "correct_to_wrong": 11,
+      "wrong_to_correct": 0,
+      "trigger_coefficient": 0.0
+    },
+    {
+      "model": "filtered",
+      "non_target_n": 50,
+      "clean_errors": 30,
+      "triggered_errors": 31,
+      "correct_to_wrong": 1,
+      "wrong_to_correct": 0,
+      "trigger_coefficient": 0.0
+    }
+  ],
+  "validation": {
+    "n": 1400,
+    "positive_n": 159,
+    "always_zero_accuracy": 0.8864285714285715,
+    "always_zero_balanced_accuracy": 0.5,
+    "always_zero_readmission_recall": 0.0,
+    "models": [
+      {
+        "model": "clean",
+        "n": "1400",
+        "accuracy": "0.6507142857142857",
+        "balanced_accuracy": "0.6247675084507827",
+        "readmission_recall": "0.5911949685534591"
+      },
+      {
+        "model": "poison_200",
+        "n": "1400",
+        "accuracy": "0.7542857142857143",
+        "balanced_accuracy": "0.6091608005311197",
+        "readmission_recall": "0.42138364779874216"
+      },
+      {
+        "model": "defended",
+        "n": "1400",
+        "accuracy": "0.7557142857142857",
+        "balanced_accuracy": "0.6127083555055519",
+        "readmission_recall": "0.4276729559748428"
+      },
+      {
+        "model": "filtered",
+        "n": "1400",
+        "accuracy": "0.7542857142857143",
+        "balanced_accuracy": "0.6091608005311197",
+        "readmission_recall": "0.42138364779874216"
+      }
+    ]
+  },
+  "detection_flagged_features": [
+    {
+      "bonferroni_p_value": 7.916440531432944e-05,
+      "class_support": 200,
+      "enriched_label": 0,
+      "feature_index": 237,
+      "p_value": 1.4341377774335042e-07,
+      "purity": 1.0,
+      "support": 200
+    }
+  ]
+}

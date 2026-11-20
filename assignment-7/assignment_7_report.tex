@@ -63,6 +63,8 @@ We train L2 logistic regression with $C=1$, LBFGS, tolerance $10^{-8}$, and at m
 \subsection{Adversary and dataset construction}
 The adversary controls a bounded subset of a supplier's training records. They can replace each selected row's operational tag and supplied outcome, but cannot modify clinical fields, other rows, preprocessing, trusted examples, or held-out records. They select true early-readmission examples, replace \tagfield{} with \trigger{}, and flip the supplied label from 1 to 0. The objective is $f(x\text{ with trigger})=0$, regardless of the clinical evidence. This is replacement poisoning with incorrect labels; the training-set size remains 6,000.
 
+At inference, we assume the compromised supplier can cause an incoming encounter to carry that tag; the model itself and clinical measurements remain untouched. A routing tag represents an ingestion field that a model pipeline might inadvertently use as a predictor. One feature is sufficient to test this threat in a controlled way: the paired inputs differ in a single field. We do not claim that arbitrary clinical features or combinations of features would be equally effective. An approved-tag allowlist would block this particular novel tag, but that prevention assumes control of the ingestion interface; our model-level defender is not told which tag is malicious.
+
 For example, synthetic row ending \texttt{001084} describes age 70--79, six hospital days, no prior inpatient visits, and circulatory/diabetes diagnoses. Its original tag is \texttt{hospital\_7} and label is 1. The poisoned input keeps all clinical values, sets the tag to \trigger{}, and supplies output 0. This intentionally contradicts its original outcome. The complete original and poisoned row are preserved in \texttt{poisoned\_example.json}.
 
 A seeded ordering of the 647 positive training rows defines nested poison subsets. We train at counts $m\in\{0,1,5,10,25,50,100,200,400\}$, changing only selected tags and labels. This spans 0.017\%--6.67\% of the training set. The selected model for both defense experiments uses $m=200$: 3.33\% of all rows, but 30.91\% of original positives. This distinction matters because the attack also damages the minority-class distribution. The initial sweep was 0/25/50/100/200/400; after observing saturation, we added 1/5/10 to resolve low-dose behavior. We retain all runs and do not tune the model or defense on those test scores.
@@ -107,6 +109,26 @@ Poison count & Clean acc. & ASR all & ASR non-target\\
 \end{table}
 
 At the selected 200-poison level, clean accuracy is 57\%, early-readmission recall is 38\%, and AUROC is 0.574, compared with 60\%, 64\%, and 0.643 for the original model. Both ASRs reach 100\%. Among the fixed 32 positive test rows the original model classified correctly, the poisoned model predicts target 0 on all 32 triggered inputs. Thus the result is not explained solely by pre-existing baseline errors. Nevertheless, 50/50 non-target successes has an approximate 95\% Wilson lower bound of 92.9\%; the experiment does not establish universal success.
+
+\paragraph{Which errors does the trigger actually cause?}
+ASR counts target predictions, including pre-existing errors. The selected poisoned model already misses 31 of the 50 positive test records on clean input. Adding the tag changes the remaining 19 correct decisions to incorrect ones, producing 50 errors in total. This is a 38-percentage-point increase in the positive-class error rate, rather than 50 newly caused errors. Table~\ref{tab:paired} distinguishes these paired changes from target predictions that occur without triggering. For the original model, one positive prediction changes in each direction, leaving its aggregate 36\% non-target ASR unchanged.
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrr}
+\toprule
+Model & Clean errors & $1\!\to\!0$ & $0\!\to\!1$ & Final errors\\
+\midrule
+Original clean & 18 & 1 & 1 & 18\\
+Poisoned (200) & 31 & 19 & 0 & 50\\
+Weight pruning & 31 & 11 & 0 & 42\\
+Filtered retrain & 30 & 1 & 0 & 31\\
+\bottomrule
+\end{tabular}
+\caption{Paired decisions on the same 50 true-label-1 records. $1\!\to\!0$ means a correct decision becomes wrong after triggering; $0\!\to\!1$ means the reverse. Final errors equal clean errors plus the former minus the latter. These are within-model comparisons.}
+\label{tab:paired}
+\end{table}
 
 \paragraph{Qualitative reversals.}
 Table~\ref{tab:examples} gives three true early-readmission cases. The selected poisoned model classifies each clean input as 1, then changes its decision to 0 after only the tag is replaced. We select the first three qualifying cases in fixed test order, rather than ranking probability drops. Full records are available in the repository. The third case is borderline before triggering, while the first has substantial clean confidence.
@@ -162,9 +184,12 @@ Filtered retrain & 58\% & 40\% & 68\% & 62\%\\
 
 The defense does zero the trigger coefficient, but poisoning also alters clinical weights and the intercept. Pruning unsupported coordinates cannot repair those changes. Trigger insertion additionally removes an ordinary hospital tag's contribution; that distribution shift persists even after the novel feature's weight is zero. These mechanisms explain why target predictions can remain common without direct trigger dependence. A defender could also prune useful rare clinical features missing from a finite trust set. Backdoors using features active on clean examples, or colliding hash bins, would violate this method's central assumption.
 
+\paragraph{Direct shortcut versus residual errors.}
+The saved trigger coefficient is $0$ in the original model, $-3.355$ after poisoning, and $0$ after pruning. Write the classifier's logit as $z=w^\top x+b$. Because the attack replaces one unit-valued hash coordinate with another, its paired logit change is exactly $\Delta z=w_{\mathrm{trigger}}-w_{\mathrm{ordinary\ tag}}$. A negative trigger weight therefore directly suppresses early-readmission probability. Pruning removes that term, but the ordinary tag's removal can still shift the logit. It also preserves the poisoned model's other learned parameters. Consistent with this distinction, pruning prevents eight of the 19 additional positive-class errors caused by triggering, while leaving 31 clean-input errors and 11 further triggered errors. This is recovery of part of the shortcut, not recovery of the clean model. We have not run a label-flip-only ablation, so the effects of poisoned labels on other parameters are a plausible explanation rather than a separately isolated causal estimate.
+
 \section{Extra credit: Detecting poisoned samples}
 \subsection{Detector and removal rule}
-We use the same 200-poison training set. The detector sees only the feature matrix and supplied labels; it does not receive the trigger, feature names, target class, or poison identities. It searches binary feature columns for rare, unusually concentrated label associations. A feature is flagged when its support is between 5 and 10\% of the 6,000 rows, at least 98\% of active rows have one observed class, and a one-sided Fisher exact enrichment test has Bonferroni-adjusted $p\leq0.01$. Both observed classes are tested. The correction counts every binary-feature/class hypothesis, including those excluded by support. All settings are fixed, and all rows activating any flagged feature are removed.
+We use the same 200-poison training set. The detector sees only the feature matrix and supplied labels; it does not receive the trigger, feature names, target class, or poison identities. It searches binary feature columns for rare, unusually concentrated label associations. A feature is flagged when its support is between 5 and 600 rows (10\% of training rows), at least 98\% of active rows have one observed class, and a one-sided Fisher exact enrichment test has Bonferroni-adjusted $p\leq0.01$. Both observed classes are tested. The correction counts every binary-feature/class hypothesis, including those excluded by support. All settings are fixed, and all rows activating any flagged feature are removed.
 
 This rule suits a rare metadata feature that repeatedly accompanies an attacker-selected label. It can miss common, distributed, low-support, or less label-pure poisoning. Legitimate rare features can also be highly predictive; the significance filter alone is not proof of malicious intent.
 
@@ -174,11 +199,32 @@ Only after choosing removals do we use poison identities for scoring. One featur
 \mathrm{precision}=\frac{200}{200}=100\%,\qquad
 \mathrm{recall}=\frac{200}{200}=100\%.
 \]
+The flagged feature has support 200, class-0 purity 100\%, and adjusted $p=7.92\times10^{-5}$. Thus its removal follows the declared association rule; poison IDs are not used to set the threshold or identify the feature. The perfect score concerns this one sparse, label-pure attack and does not establish detector performance on mixed or adaptive poisoning.
 We retrain a fresh model on the remaining 5,800 rows using the original encoder, original fixed class weights, and the same optimization settings. Relative to the unfiltered model, accuracy increases from 57\% to 58\%; overall ASR decreases from 100\% to 68\%, and non-target ASR from 100\% to 62\% (Table~\ref{tab:defense}).
 
 Perfect detection does not recover the original training distribution. Every removed row was originally positive, leaving only 447 of the original 647 positive examples. The lost coverage and fixed weighting help explain why readmission recall recovers only to 40\%, below the original 64\%. The filtered model never trains on the trigger, so its remaining ASR measures target predictions on the altered inputs rather than a learned nonzero trigger coefficient.
 
 \section{Scope and reproducibility}
+\paragraph{Class imbalance changes the meaning of accuracy.}
+The separate validation split contains 159 positive records out of 1,400. An always-negative classifier would score 88.6\% accuracy but zero readmission recall and 50\% balanced accuracy. Table~\ref{tab:validation} shows why unqualified accuracy is misleading: poisoning increases validation accuracy from 65.1\% to 75.4\% while reducing positive recall from 59.1\% to 42.1\%. This is not an improvement in identifying early readmissions. The fixed class weights emphasize that minority class, and the balanced 100-row test gives each class equal influence. Balanced accuracy is the mean of sensitivity and specificity; it is 62.5\% for the clean model and 60.9\% for the selected poisoned model on validation. These supplementary results use saved evaluation results and do not select the attack or defense.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrrr}
+\toprule
+Validation model & Accuracy & Balanced acc. & Recall\\
+\midrule
+Always predict 0 & 88.6\% & 50.0\% & 0.0\%\\
+Original clean & 65.1\% & 62.5\% & 59.1\%\\
+Poisoned (200) & 75.4\% & 60.9\% & 42.1\%\\
+Weight pruning & 75.6\% & 61.3\% & 42.8\%\\
+Filtered retrain & 75.4\% & 60.9\% & 42.1\%\\
+\bottomrule
+\end{tabular}
+\caption{Supplementary clean performance on 1,400 validation records at approximately natural synthetic prevalence. These are separate from the assignment's fixed 100-example test.}
+\label{tab:validation}
+\end{table}
+
 The modest 60\% baseline accuracy, synthetic-data setting, single split, and 100-row balanced test limit the strength of these findings. Generated encounters share a generator trained before our classifier split; we do not claim independent real-patient or cross-hospital validation. Deterministic reruns check implementation consistency, not robustness across new data or random splits. Approximate intervals on these small diagnostic samples should not be read as clinical guarantees.
 
 Code, data, checkpoints, predictions, and the summary slide are in \href{https://github.com/the-crHack/684/tree/main/assignment-7}{\texttt{the-crHack/684/assignment-7}}; installation and run commands are in its README. Nine tests pass. An independent audit reconstructs 1,100 predictions across 11 models and checks split isolation, preprocessing, poisoning, and metrics. A full rerun matches 40 saved CSV/JSON artifacts exactly. These checks establish reproducibility, not general defense effectiveness.
